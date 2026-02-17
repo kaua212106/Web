@@ -300,7 +300,14 @@ function atualizarContador(){
      ${segundos} segundos ❤️`;    
 }    
 
-setInterval(atualizarContador,1000);    
+setInterval(atualizarContador,1000);   
+
+
+    document.addEventListener("visibilitychange", function() {
+  if (document.visibilityState === "visible") {
+    window.location.reload();
+  }
+});
     
 </script>
 </body>    
