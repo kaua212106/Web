@@ -381,7 +381,9 @@ body{
   </div>
 
   <div id="controles">
+    <button>⏮</button>
     <button onclick="tocarMusica()">▶</button>
+    <button>⏭</button>
   </div>
 
 </div>
@@ -541,7 +543,7 @@ function tocarMusica(){
 
     if(musica.paused){
         musica.play();
-        botao.innerHTML = "";
+        botao.innerHTML = "▌▌";
     } else {
         musica.pause();
         botao.innerHTML = "▶";
