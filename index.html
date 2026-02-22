@@ -486,11 +486,11 @@ function escrever(){
             indiceLetra++;
 
             if(indiceLetra < idiomas[indiceIdioma].length){
-                setTimeout(escrever,10); // velocidade das letras
+                setTimeout(escrever,5); // velocidade das letras
             }else{
                 indiceIdioma++;
                 indiceLetra = 0;
-                setTimeout(escrever,70); // tempo entre idiomas
+                setTimeout(escrever,50); // tempo entre idiomas
             }
 
         }else{
