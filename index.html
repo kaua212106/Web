@@ -1,0 +1,780 @@
+<!DOCTYPE html>    
+<html lang="pt-br">    
+<head>    
+<meta charset="UTF-8">    
+<meta name="viewport" content="width=device-width, initial-scale=1.0">    
+<title>Eu te amo</title>    
+    
+<style>    
+body{    
+    margin:0;    
+    font-family: 'Arial', sans-serif;    
+    background: linear-gradient(to bottom,#ff9a9e,#fad0c4);    
+    color:white;    
+    overflow-x:hidden;    
+}    
+    
+/* TELA INICIAL */    
+#startScreen{    
+    position:fixed;    
+    width:100%;    
+    height:100%;    
+    background:black;    
+    display:flex;    
+    justify-content:center;    
+    align-items:center;    
+    z-index:999;    
+    flex-direction:column;    
+}    
+    
+.heart-btn{    
+    font-size:80px;    
+    cursor:pointer;    
+    animation:pulse 1.5s infinite;    
+    transition:1s;    
+}    
+    
+@keyframes pulse{    
+    0%{transform:scale(1);}    
+    50%{transform:scale(1.2);}    
+    100%{transform:scale(1);}    
+}    
+    
+.open{    
+    transform:scale(10);    
+    opacity:0;    
+}    
+    
+/* CONTADOR NO TOPO */    
+#contador{    
+    position:fixed;    
+    top:0;    
+    width:100%;    
+    background:rgba(0,0,0,0.6);    
+    text-align:center;    
+    padding:2px;    
+    font-size:20px;    
+    z-index:10; 
+    color:pink
+}    
+    
+#content{ 
+  position: relative;
+    z-index: 2;
+    background: rgba(0,0,0,0.35); /* fundo leve escuro */
+    padding: 25px;
+    border-radius: 20px;
+  text-shadow: 1px 1px 5px rgba(0,0,0,0.6);
+    padding-top:70px;    
+    width:92%;    
+    margin:0 auto;    
+    line-height:2;    
+    font-size:24px;    
+    text-align:justify;    
+    min-height:100vh;    
+    position:relative;    
+    z-index:2;    
+    font-size:22px;
+    line-height:1.85
+}    
+    
+/* CONTAINER DO FUNDO */    
+#background {
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    z-index: -1;
+    pointer-events: none;
+    overflow:hidden;
+}
+
+/* FOTOS COMO FUNDO MAIS VIVAS */    
+.foto{    
+    position:absolute;    
+    width:170px;    
+    height:230px;    
+    object-fit:cover;    
+    border-radius:15px;    
+    box-shadow:0 10px 25px rgba(0,0,0,0.5);    
+    opacity:0.85;    
+    filter: saturate(1.3) contrast(1.1) brightness(1.05);
+    animation: flutuar 10s ease-in-out infinite alternate;
+}    
+
+@keyframes flutuar {
+    0% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-15px) rotate(2deg); }
+    100% { transform: translateY(0) rotate(-2deg); }
+}
+
+.esq1{left:3%; top:35%; transform:rotate(-15deg);}    
+.dir1{right:3%; top:40%; transform:rotate(15deg);}    
+.esq2{left:3%; top:65%; transform:rotate(-10deg);}    
+.dir2{right:3%; top:75%; transform:rotate(10deg);}    
+.dirTop{right:3%; top:8%; transform:rotate(8deg);}   
+.esqTop{left:3%; top:7%; transform:rotate(-8deg);}
+
+/* CORAÇÕES */    
+.heart{    
+    position:fixed;    
+    bottom:-20px;    
+    animation:subir 5s linear forwards;    
+}    
+    
+@keyframes subir{    
+    0%{transform:translateY(0);opacity:1;}    
+    100%{transform:translateY(-900px);opacity:0;}    
+}
+
+/* BRILHOS PISCANDO */
+.brilho {
+    position:fixed;
+    width:5px;
+    height:5px;
+    background:white;
+    border-radius:50%;
+    opacity:0;
+    z-index:0;
+    pointer-events:none;
+    animation: piscar 2s infinite;
+}
+
+@keyframes piscar {
+    0%, 100% {opacity:0;}
+    50% {opacity:0.8;}
+}
+
+
+#btnMusica{
+    display:block;
+    margin:20px auto 0 auto;
+    padding:15px 25px;
+    font-size:18px;
+    border:none;
+    border-radius:30px;
+    background:linear-gradient(45deg,#ff4e50,#fc913a);
+    color:white;
+    cursor:pointer;
+    box-shadow:0 5px 15px rgba(0,0,0,0.4);
+    transition:0.8s;
+
+    opacity:0;
+    transform:translateY(20px);
+}
+
+#btnMusica.mostrar{
+    opacity:1;
+    transform:translateY(0);
+}
+
+
+/* TELA PLAYER */
+#telaPlayer{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:black;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    transform:translateY(100%);
+    transition:1s;
+    z-index:9999;
+}
+
+#telaPlayer.ativa{
+    transform:translateY(0);
+}
+
+.playerBox{
+    width:300px;
+    min-height:400px;
+    padding:25px 20px;
+    background:#121212;
+    border-radius:20px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+    color:white;
+    position:relative;
+    box-shadow:0 0 40px rgba(255,255,255,0.1);
+    text-align:center;
+}
+
+/* Camada misteriosa */
+#misterio{
+    position:absolute;
+    width:100%;
+    height:100%;
+    background:rgba(255,255,255,0.05);
+    backdrop-filter:blur(10px);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:100px;
+    cursor:pointer;
+    transition:0.5s;
+}
+
+#spotifyFake{
+    opacity:0;
+    text-align:center;
+    transition:0.4s;
+
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:15px;
+}
+
+#spotifyFake button{
+    margin-top:20px;
+    padding:10px 20px;
+    border:none;
+    border-radius:20px;
+    background:#1db954;
+    color:white;
+    cursor:pointer;
+}
+
+#capaContainer{
+    cursor:pointer;
+    text-align:center;
+}
+
+#textoRevelar{
+    margin-top:10px;
+    font-size:14px;
+    opacity:0.8;
+}
+
+#barraContainer{
+    width:80%;
+    height:6px;
+    background:#444;
+    border-radius:10px;
+    margin:20px auto;
+    cursor:pointer;
+}
+
+#barra{
+    width:0%;
+    height:100%;
+    background:#ff4d6d;
+    border-radius:10px;
+}
+
+#capaMusica{
+    width:200px;
+    border-radius:15px;
+    box-shadow:0 10px 25px rgba(0,0,0,0.5);
+}
+
+#tempoContainer{
+    width:100%;
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+#barraContainer{
+    flex:1;
+    height:4px;
+    background:#555;
+    border-radius:5px;
+    overflow:hidden;
+}
+
+#barra{
+    width:0%;
+    height:100%;
+    background:white;
+}
+
+#controles{
+    display:flex;
+    gap:40px;
+    align-items:center;
+}
+
+#controles button{
+    background:none;
+    border:none;
+    color:white;
+    font-size:22px;
+    cursor:pointer;
+}
+#avisoProxima{
+    margin-top:15px;
+    font-size:14px;
+    opacity:0.8;
+    text-align:center;
+}
+
+#listaAmor {
+    line-height: 1.2;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-left: 18px;
+}
+#listaAmor li {
+    margin: 0;
+}
+</style>    
+</head>    
+<body>    
+    
+<!-- TELA PRETA -->    
+<div id="startScreen">    
+    <div class="heart-btn" onclick="abrir()">❤️</div>    
+    <p>Clique no coração</p>    
+</div>    
+    
+<!-- CRONÔMETRO -->    
+<div id="contador"></div>    
+    
+<audio id="musica"></audio>
+
+<!-- FUNDO -->    
+<div id="background">
+    <img src="foto1.jpg" class="foto esq1">    
+    <img src="foto2.jpg" class="foto dir1">    
+    <img src="foto3.jpg" class="foto esq2">    
+    <img src="foto4.jpg" class="foto dir2">    
+    <img src="foto5.jpg" class="foto dirTop">
+    <img src="foto6.jpg" class="foto esqTop">
+</div>
+
+<div id="content">
+    <div id="texto"></div>
+    <button id="btnMusica" onclick="abrirPlayer(event)">🎵Clique aqui para ver as musicas que nos define🎵</button>
+</div>
+
+<div id="telaPlayer">
+  <div class="playerBox">
+
+    <div id="misterio">?</div>
+    <p id="textoRevelar">Clique aqui para revelar</p>
+
+
+<div id="spotifyFake">
+
+  <img src="capa.jpg" id="capaMusica">
+
+  <h2>Duas Metades - Ao Vivo</h2>
+  <p>Jorge & Mateus</p>
+
+  <div id="tempoContainer">
+    <span id="tempoAtual">0:00</span>
+    <div id="barraContainer">
+      <div id="barra"></div>
+    </div>
+    <span id="tempoTotal">3:51</span>
+  </div>
+
+  <div id="controles">
+  <button onclick="voltarMusica()">⏮</button>
+  <button onclick="tocarMusica()">▶</button>
+  <button onclick="proximaMusica()">⏭</button>
+</div>
+<h4 id="avisoProxima">Clique no ⏭ para passar para a próxima música</h4>
+</div>
+
+<script>    
+
+let texto1 = `
+Feliz aniversário, minha princesa.      
+
+Desde que você entrou na minha vida, tudo começou a ter mais cor, mais sentido, mais intensidade.    
+Você virou meu pensamento favorito, minha paz nos dias difíceis e o motivo do meu sorriso mais sincero.    
+
+Cada conversa nossa, cada risada, cada momento compartilhado    
+foi construindo algo que hoje é muito maior do que eu imaginava sentir.    
+
+Você é aquela pessoa que acalma meu coração,    
+que acelera meus sentimentos,    
+e que me faz acreditar que algumas conexões realmente são especiais.    
+
+Se eu pudesse fazer um pedido hoje,    
+não seria nada material.    
+Seria apenas continuar ao seu lado,    
+escrevendo capítulos,    
+vivendo momentos,    
+colecionando memórias   
+e transformando sonhos em realidade.    
+
+Que esse novo ano da sua vida venha com ainda mais luz,    
+mais conquistas,    
+mais felicidade    
+e, se depender de mim,    
+com muito amor também.    
+
+Eu escolheria você mil vezes.    
+E continuaria escolhendo, todos os dias.
+Espero muito que eu e você sejamos para sempre, que um dia subiremos no altar juntos,
+e que eu seja o melhor pai do mundo dos filhos que você tanto sonha em ter.
+Aproveite muito seu dia, minha princesa.
+
+`;
+
+let texto2 = `
+Eu escrevi Eu te amo em alguns idiomas diferentes mas nenhum vai realmente conseguir descrever o que eu realmente sinto por você.
+Que hoje você sinta o quanto é amada.
+Porque eu te amo mais do que qualquer palavra pode explicar. ❤️❤️❤️
+`;
+
+const idiomas = [
+"Português — Eu te amo",
+"Inglês — I love you",
+"Espanhol — Te amo",
+"Francês — Je t’aime",
+"Alemão — Ich liebe dich",
+"Italiano — Ti amo",
+"Japonês — 愛してる (Aishiteru)",
+"Chinês — 我爱你 (Wǒ ài nǐ)",
+"Coreano — 사랑해 (Saranghae)",
+"Russo — Я тебя люблю",
+"Árabe — أنا أحبك",
+"Hindi — मैं तुमसे प्यार करता हूँ",
+"Turco — Seni seviyorum",
+"Grego — Σ’ αγαπώ",
+"Hebraico — אני אוהב אותך",
+"Sueco — Jag älskar dig",
+"Dinamarquês — Jeg elsker dig",
+"Norueguês — Jeg elsker deg",
+"Holandês — Ik hou van jou",
+"Latim — Te amo"
+];
+let i = 0;
+let fase = 1;
+let indiceIdioma = 0;
+let indiceLetra = 0;
+
+function escrever(){
+
+    if(fase === 1){
+
+        if(i < texto1.length){
+            document.getElementById("texto").innerHTML += texto1.charAt(i);
+            i++;
+            setTimeout(escrever,35);
+        }else{
+            fase = 2;
+            document.getElementById("texto").innerHTML += 
+            "<ol class='lista-amor' id='listaAmor'></ol>";
+            escrever();
+        }
+
+    }
+
+    else if(fase === 2){
+
+        if(indiceIdioma < idiomas.length){
+
+            if(indiceLetra === 0){
+                const li = document.createElement("li");
+                li.id = "item"+indiceIdioma;
+                document.getElementById("listaAmor").appendChild(li);
+            }
+
+            const itemAtual = document.getElementById("item"+indiceIdioma);
+            itemAtual.innerHTML += idiomas[indiceIdioma].charAt(indiceLetra);
+            indiceLetra++;
+
+            if(indiceLetra < idiomas[indiceIdioma].length){
+                setTimeout(escrever,10); // velocidade das letras
+            }else{
+                indiceIdioma++;
+                indiceLetra = 0;
+                setTimeout(escrever,70); // tempo entre idiomas
+            }
+
+        }else{
+            fase = 3;
+            i = 0;
+            escrever();
+        }
+
+    }
+
+    else if(fase === 3){
+
+        if(i < texto2.length){
+            document.getElementById("texto").innerHTML += texto2.charAt(i);
+            i++;
+            setTimeout(escrever,35);
+        }else{
+            document.getElementById("btnMusica").classList.add("mostrar");
+        }
+
+    }
+
+}
+
+function abrir(){    
+    document.querySelector(".heart-btn").classList.add("open");    
+    setTimeout(()=>{    
+        document.getElementById("startScreen").style.display="none";    
+        escrever();    
+        gerarCoracoes();    
+        gerarBrilhos();
+    },1000);    
+}    
+
+
+// CORAÇÕES SUBINDO ALEATÓRIOS
+function gerarCoracoes(){    
+    setInterval(()=>{    
+        const heart=document.createElement("div");    
+        heart.classList.add("heart");    
+        heart.innerHTML="❤️";    
+        heart.style.left=Math.random()*100+"vw";    
+        heart.style.fontSize=(Math.random()*20+15)+"px";    
+        document.body.appendChild(heart);    
+        setTimeout(()=>heart.remove(),5000);    
+    },400);    
+
+    // CORAÇÕES SEGUINDO CURSOR / TOQUE
+    document.addEventListener("mousemove", e => {
+        const h = document.createElement("div");
+        h.classList.add("heart");
+        h.innerHTML = "❤️";
+        h.style.left = e.clientX + "px";
+        h.style.top = e.clientY + "px";
+        h.style.fontSize = "18px";
+        document.body.appendChild(h);
+        setTimeout(()=>h.remove(),1500);
+    });
+
+    document.addEventListener("touchmove", e => {
+        const touch = e.touches[0];
+        const h = document.createElement("div");
+        h.classList.add("heart");
+        h.innerHTML = "❤️";
+        h.style.left = touch.clientX + "px";
+        h.style.top = touch.clientY + "px";
+        h.style.fontSize = "18px";
+        document.body.appendChild(h);
+        setTimeout(()=>h.remove(),1500);
+    });
+}
+
+// BRILHOS PISCANDO
+function gerarBrilhos(){
+    for(let j=0;j<50;j++){
+        const b = document.createElement("div");
+        b.classList.add("brilho");
+        b.style.left = Math.random()*100+"vw";
+        b.style.top = Math.random()*100+"vh";
+        b.style.width = (Math.random()*3+2)+"px";
+        b.style.height = b.style.width;
+        b.style.animationDuration = (Math.random()*2+1)+"s";
+        document.body.appendChild(b);
+    }
+}
+
+/* CONTADOR */    
+const dataBeijo = new Date("2026-02-09T07:20:00");    
+
+function atualizarContador(){    
+    const agora = new Date();    
+    const diff = agora - dataBeijo;    
+
+    const meses = Math.floor(diff / (1000*60*60*24*30));    
+    const dias = Math.floor(diff / (1000*60*60*24)) % 30;    
+    const horas = Math.floor(diff / (1000*60*60)) % 24;    
+    const segundos = Math.floor(diff / 1000) % 60;    
+
+    document.getElementById("contador").innerHTML =    
+    `Nosso primeiro beijo aconteceu há ${meses} meses,    
+     ${dias} dias,    
+     ${horas} horas e    
+     ${segundos} segundos ❤️`;    
+}    
+
+setInterval(atualizarContador,1000);   
+
+function abrirPlayer(event){
+    event.stopPropagation(); // impede o clique de continuar
+    document.getElementById("telaPlayer").classList.add("ativa");
+}
+
+function revelar(){
+    const misterio = document.getElementById("misterio");
+
+    misterio.style.transform = "scale(8)";
+    misterio.style.opacity = "0";
+
+    setTimeout(() => {
+        misterio.style.display = "none";
+        document.getElementById("textoRevelar").style.display = "none";
+        document.getElementById("spotifyFake").style.opacity = "1";
+        carregarMusica(musicaAtual);
+    }, 600);
+}
+
+let jaRevelou = false;
+
+document.addEventListener("click", function(){
+
+    if(jaRevelou) return;
+
+    const telaPlayer = document.getElementById("telaPlayer");
+
+    // Só funciona se o player estiver aberto
+    if(!telaPlayer.classList.contains("ativa")) return;
+
+    revelar();
+    jaRevelou = true;
+
+});
+
+const playlist = [
+  {
+    nome: "Duas Metades",
+    artista: "Jorge & Mateus",
+    arquivo: "duas-metades.mp3",
+    capa: "capa.jpg"
+  },
+  {
+    nome: "O Amor Coloriu",
+    artista: "Luan Santana",
+    arquivo: "amor-coloriu.mp3",
+    capa: "capa2.jpg"
+  },
+  {
+    nome: "Os anjos cantam",
+    artista: "Jorge & Mateus",
+    arquivo: "anjos-cantam.mp3",
+    capa: "capa3.jpg"
+  },
+  {
+    nome: "Te assumir para o Brasil",
+    artista: "Matheus & Kauan",
+    arquivo: "te-assumir.mp3",
+    capa: "capa4.jpg"
+  },
+  {
+    nome: "Pra sempre com você",
+    artista: "Jorge & Mateus",
+    arquivo: "para-sempre.mp3",
+    capa: "capa5.jpg"
+  }
+];
+
+let musicaAtual = 0;
+
+function carregarMusica(index){
+    const musica = document.getElementById("musica");
+
+    musica.src = playlist[index].arquivo;
+
+    document.querySelector("#spotifyFake h2").innerText = playlist[index].nome;
+    document.querySelector("#spotifyFake p").innerText = playlist[index].artista;
+    document.getElementById("capaMusica").src = playlist[index].capa;
+
+    musica.load();
+}
+
+function tocarMusica(){
+    const musica = document.getElementById("musica");
+    const botao = document.querySelector("#controles button:nth-child(2)");
+
+    if(musica.paused){
+        musica.play();
+        botao.innerHTML = "▌▌";
+    } else {
+        musica.pause();
+        botao.innerHTML = "▶";
+    }
+}
+
+const audio = document.getElementById("musica");
+const barra = document.getElementById("barra");
+const barraContainer = document.getElementById("barraContainer");
+
+audio.addEventListener("loadedmetadata", () => {
+    document.getElementById("tempoTotal").innerText = formatarTempo(audio.duration);
+});
+
+audio.addEventListener("timeupdate", () => {
+    const progresso = (audio.currentTime / audio.duration) * 100;
+    barra.style.width = progresso + "%";
+
+    document.getElementById("tempoAtual").innerText = formatarTempo(audio.currentTime);
+});
+
+function formatarTempo(segundos){
+    const min = Math.floor(segundos / 60);
+    const sec = Math.floor(segundos % 60);
+    return min + ":" + (sec < 10 ? "0" + sec : sec);
+}
+
+barraContainer.addEventListener("click", (e) => {
+    const largura = barraContainer.clientWidth;
+    const cliqueX = e.offsetX;
+    const tempo = (cliqueX / largura) * audio.duration;
+    audio.currentTime = tempo;
+})
+
+audio.addEventListener("ended", () => {
+
+    if(musicaAtual < playlist.length - 1){
+        proximaMusica();
+    } else {
+        document.querySelector("#controles button:nth-child(2)").innerHTML = "▶";
+    }
+
+});
+
+function proximaMusica(){
+
+    if(musicaAtual >= playlist.length - 1){
+        return; // já está na última, não faz nada
+    }
+
+    musicaAtual++;
+
+    animarTroca();
+    carregarMusica(musicaAtual);
+
+    audio.play();
+    document.querySelector("#controles button:nth-child(2)").innerHTML = "▌▌";
+}
+
+function voltarMusica(){
+
+    if(musicaAtual <= 0){
+        return; // já está na primeira, não faz nada
+    }
+
+    musicaAtual--;
+
+    animarTroca();
+    carregarMusica(musicaAtual);
+
+    audio.play();
+    document.querySelector("#controles button:nth-child(2)").innerHTML = "▌▌";
+}
+
+function animarTroca(){
+    const box = document.getElementById("spotifyFake");
+
+    box.style.opacity = "0";
+    box.style.transform = "translateX(30px)";
+
+    setTimeout(() => {
+        box.style.transform = "translateX(0)";
+        box.style.opacity = "1";
+    }, 200);
+}
+
+    
+</script>
+</body>    
+</html> 
