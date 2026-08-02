@@ -6,24 +6,27 @@
 <title>Eu te amo</title>    
     
 <style>    
-html {
+    * {
   margin: 0;
   padding: 0;
-  overflow-x: hidden; /* 🔒 trava balanço lateral de vez */
-  box-sizing: border-box;
+  box-sizing: border-box; /* 🔒 Tudo calculado sem estourar */
 }
-    
+
+html {
+  overflow-x: hidden; /* ❌ NUNCA ROLAGEM LATERAL */
+  min-height: 100vh;
+}
+
 body{    
-    margin: 0;    
-    padding: 0;
     font-family: 'Arial', sans-serif;    
-    background: linear-gradient(to bottom,#ff9a9e,#fad0c4) fixed; /* fundo fixo */
+    background: linear-gradient(to bottom,#ff9a9e,#fad0c4) fixed; /* 🖼️ FIXO, NÃO MEXE */
+    background-size: cover; /* COBRE TELA INTEIRA */
     color: white;    
     overflow-x: hidden;
-    width: 100%; /* 👈 era 95%, mudei para 100% */
-    min-height: 100vh;
-    box-sizing: border-box;
+    width: 100%; /* TELA TODA, SEM 95% */
+    min-height: 100vh; /* ALTURA TOTAL */
 }
+    
     
     
 /* TELA INICIAL */    
@@ -71,37 +74,36 @@ body{
 }    
     
 #content{ 
-  position: relative;
+    position: relative;
     z-index: 2;
-    background: rgba(0,0,0,0.35); /* fundo leve escuro */
+    background: rgba(0,0,0,0.35);
     padding: 25px;
     border-radius: 20px;
-  text-shadow: 1px 1px 5px rgba(0,0,0,0.6);
-    padding-top:70px;    
-    padding-bottom: 80px;
-    width:92%;    
-    margin:0 auto;    
-    line-height:2;    
-    font-size:24px;    
-    text-align:justify;    
-    min-height:100vh;    
-    position:relative;    
-    z-index:2;    
-    font-size:22px;
-    line-height:1.85
-}    
+    text-shadow: 1px 1px 5px rgba(0,0,0,0.6);
+    padding-top: 70px;    
+    padding-bottom: 100px; /* 🔝 ESPAÇO BEM GRANDE EMBAIXO */
+    width: 92%;    
+    margin: 0 auto;    
+    line-height: 2;    
+    font-size: 22px;    
+    text-align: justify;    
+    min-height: 100vh;
+}
+    
     
 /* CONTAINER DO FUNDO */    
 #background {
     position: fixed;
     top: 0;
     left: 0;
-    width: 100vw; /* 👈 cobre tela toda sem falhas */
-    height: 100vh;
+    width: 100vw; /* LARGURA JANELA */
+    height: 100vh; /* ALTURA JANELA */
+    background: linear-gradient(to bottom,#ff9a9e,#fad0c4); /* REFORÇA FUNDO */
     z-index: -1;
     pointer-events: none;
     overflow: hidden;
 }
+    
     
 
 /* FOTOS COMO FUNDO MAIS VIVAS */    
