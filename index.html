@@ -1,123 +1,118 @@
-<!DOCTYPE html>    
-<html lang="pt-br">    
-<head>    
-<meta charset="UTF-8">    
-<meta name="viewport" content="width=device-width, initial-scale=1.0">    
-<title>Eu te amo</title>    
-    
-<style>    
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Eu te amo</title>
+
+<style>
     * {
   margin: 0;
   padding: 0;
-  box-sizing: border-box; /* 🔒 Tudo calculado sem estourar */
+  box-sizing: border-box;
 }
 
 html {
-  overflow-x: hidden; /* ❌ NUNCA ROLAGEM LATERAL */
+  overflow-x: hidden;
   min-height: 100vh;
 }
 
-body{    
-    font-family: 'Arial', sans-serif;    
-    background: linear-gradient(to bottom,#ff9a9e,#fad0c4) fixed; /* 🖼️ FIXO, NÃO MEXE */
-    background-size: cover; /* COBRE TELA INTEIRA */
-    color: white;    
+body{
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(to bottom,#ff9a9e,#fad0c4) fixed;
+    background-size: cover;
+    color: white;
     overflow-x: hidden;
-    width: 100%; /* TELA TODA, SEM 95% */
-    min-height: 100vh; /* ALTURA TOTAL */
+    width: 100%;
+    min-height: 100vh;
 }
-    
-    
-    
-/* TELA INICIAL */    
-#startScreen{    
-    position:fixed;    
-    width:100%;    
-    height:100%;    
-    background:black;    
-    display:flex;    
-    justify-content:center;    
-    align-items:center;    
-    z-index:999;    
-    flex-direction:column;    
-}    
-    
-.heart-btn{    
-    font-size:80px;    
-    cursor:pointer;    
-    animation:pulse 1.5s infinite;    
-    transition:1s;    
-}    
-    
-@keyframes pulse{    
-    0%{transform:scale(1);}    
-    50%{transform:scale(1.2);}    
-    100%{transform:scale(1);}    
-}    
-    
-.open{    
-    transform:scale(10);    
-    opacity:0;    
-}    
-    
-/* CONTADOR NO TOPO */    
-#contador{    
-    position:fixed;    
-    top:0;    
-    width:100%;    
-    background:rgba(0,0,0,0.6);    
-    text-align:center;    
-    padding:2px;    
-    font-size:20px;    
-    z-index:10; 
+
+
+#startScreen{
+    position:fixed;
+    width:100%;
+    height:100%;
+    background:black;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    z-index:999;
+    flex-direction:column;
+}
+
+.heart-btn{
+    font-size:80px;
+    cursor:pointer;
+    animation:pulse 1.5s infinite;
+    transition:1s;
+}
+
+@keyframes pulse{
+    0%{transform:scale(1);}
+    50%{transform:scale(1.2);}
+    100%{transform:scale(1);}
+}
+
+.open{
+    transform:scale(10);
+    opacity:0;
+}
+
+
+#contador{
+    position:fixed;
+    top:0;
+    width:100%;
+    background:rgba(0,0,0,0.6);
+    text-align:center;
+    padding:2px 38px 2px 2px;
+    font-size:20px;
+    z-index:10;
     color:pink
-}    
-    
-#content{ 
+}
+
+#content{
     position: relative;
     z-index: 2;
     background: rgba(0,0,0,0.35);
     padding: 25px;
     border-radius: 20px;
     text-shadow: 1px 1px 5px rgba(0,0,0,0.6);
-    padding-top: 70px;    
-    padding-bottom: 100px; /* 🔝 ESPAÇO BEM GRANDE EMBAIXO */
-    width: 100%;    
-    margin: 0 auto;    
-    line-height: 2;    
-    font-size: 22px;    
-    text-align: justify;    
+    padding-top: 70px;
+    padding-bottom: 100px;
+    width: 100%;
+    margin: 0 auto;
+    line-height: 2;
+    font-size: 22px;
+    text-align: justify;
     min-height: 100vh;
 }
-    
-    
-/* CONTAINER DO FUNDO */    
+
+
 #background {
     position: fixed;
     top: 0;
     left: 0;
-    width: 100vw; /* LARGURA JANELA */
-    height: 100vh; /* ALTURA JANELA */
-    background: linear-gradient(to bottom,#ff9a9e,#fad0c4); /* REFORÇA FUNDO */
+    width: 100vw;
+    height: 100vh;
+    background: linear-gradient(to bottom,#ff9a9e,#fad0c4);
     z-index: -1;
     pointer-events: none;
     overflow: hidden;
 }
-    
-    
 
-/* FOTOS COMO FUNDO MAIS VIVAS */    
-.foto{    
-    position:absolute;    
-    width:150px;    
-    height:210px;    
-    object-fit:cover;    
-    border-radius:15px;    
-    box-shadow:0 10px 25px rgba(0,0,0,0.5);    
-    opacity:0.85;    
+
+.foto{
+    position:absolute;
+    width:150px;
+    height:210px;
+    object-fit:cover;
+    border-radius:15px;
+    box-shadow:0 10px 25px rgba(0,0,0,0.5);
+    opacity:0.85;
     filter: saturate(1.3) contrast(1.1) brightness(1.05);
     animation: flutuar 10s ease-in-out infinite alternate;
-}    
+}
 
 @keyframes flutuar {
     0% { transform: translateY(0) rotate(0deg); }
@@ -125,26 +120,26 @@ body{
     100% { transform: translateY(0) rotate(-2deg); }
 }
 
-.esq1{left:3%; top:39%; transform:rotate(-15deg);}    
-.dir1{right:3%; top:40%; transform:rotate(15deg);}    
-.esq2{left:3%; top:69%; transform:rotate(-10deg);}    
-.dir2{right:3%; top:70%; transform:rotate(10deg);}    
-.dirTop{right:3%; top:8%; transform:rotate(8deg);}   
+.esq1{left:3%; top:39%; transform:rotate(-15deg);}
+.dir1{right:3%; top:40%; transform:rotate(15deg);}
+.esq2{left:3%; top:69%; transform:rotate(-10deg);}
+.dir2{right:3%; top:70%; transform:rotate(10deg);}
+.dirTop{right:3%; top:8%; transform:rotate(8deg);}
 .esqTop{left:3%; top:7%; transform:rotate(-8deg);}
 
-/* CORAÇÕES */    
-.heart{    
-    position:fixed;    
-    bottom:-20px;    
-    animation:subir 5s linear forwards;    
-}    
-    
-@keyframes subir{    
-    0%{transform:translateY(0);opacity:1;}    
-    100%{transform:translateY(-900px);opacity:0;}    
+
+.heart{
+    position:fixed;
+    bottom:-20px;
+    animation:subir 5s linear forwards;
 }
 
-/* BRILHOS PISCANDO */
+@keyframes subir{
+    0%{transform:translateY(0);opacity:1;}
+    100%{transform:translateY(-900px);opacity:0;}
+}
+
+
 .brilho {
     position:fixed;
     width:5px;
@@ -163,173 +158,870 @@ body{
 }
 
 
-#btnMusica{
-    display:block;
-    margin:20px auto 0 auto;
-    padding:15px 25px;
-    font-size:18px;
-    border:none;
-    border-radius:30px;
-    background:linear-gradient(45deg,#ff4e50,#fc913a);
+#btnSom{
+    position:fixed;
+    top:4px;
+    right:5px;
+    width:28px;
+    height:28px;
+    border:1px solid rgba(255,255,255,0.18);
+    border-radius:50%;
+    background:rgba(0,0,0,0.20);
     color:white;
+    font-size:14px;
+    line-height:1;
     cursor:pointer;
-    box-shadow:0 5px 15px rgba(0,0,0,0.4);
-    transition:0.8s;
-
+    z-index:30;
+    box-shadow:none;
+    backdrop-filter:blur(4px);
     opacity:0;
-    transform:translateY(20px);
+    pointer-events:none;
+    transform:scale(0.9);
+    transition:opacity .35s ease, transform .25s ease, background .25s ease;
 }
 
-#btnMusica.mostrar{
+#btnSom.mostrar{
+    opacity:0.72;
+    pointer-events:auto;
+    transform:scale(1);
+}
+
+#btnSom:hover,
+#btnSom:focus-visible{
+    opacity:1;
+    background:rgba(0,0,0,0.38);
+}
+
+#btnSom:active{
+    transform:scale(0.92);
+}
+
+
+#chamadaFinal{
+    display:none;
+    margin:45px auto 10px;
+    text-align:center;
+    opacity:0;
+    transform:translateY(18px);
+    transition:opacity .8s ease, transform .8s ease;
+}
+
+#chamadaFinal.mostrar{
     opacity:1;
     transform:translateY(0);
 }
 
-
-/* TELA PLAYER */
-#telaPlayer{
-    position:fixed;
-    top:0;
-    left:0;
-    width:100%;
-    height:100%;
-    background:black;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    transform:translateY(100%);
-    transition:1s;
-    z-index:9999;
-}
-
-#telaPlayer.ativa{
-    transform:translateY(0);
-}
-
-.playerBox{
-    width:300px;
-    min-height:400px;
-    padding:25px 20px;
-    background:#121212;
-    border-radius:20px;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    flex-direction:column;
-    color:white;
-    position:relative;
-    box-shadow:0 0 40px rgba(255,255,255,0.1);
-    text-align:center;
-}
-
-/* Camada misteriosa */
-#misterio{
-    position:absolute;
-    width:100%;
-    height:100%;
-    background:rgba(255,255,255,0.05);
-    backdrop-filter:blur(10px);
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    font-size:100px;
-    cursor:pointer;
-    transition:0.5s;
-}
-
-#spotifyFake{
-    opacity:0;
-    text-align:center;
-    transition:0.4s;
-
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    gap:15px;
-}
-
-#spotifyFake button{
-    margin-top:20px;
-    padding:10px 20px;
+#btnSurpresaFinal{
     border:none;
-    border-radius:20px;
-    background:#1db954;
+    border-radius:999px;
+    padding:15px 22px;
+    font-size:16px;
+    font-weight:700;
     color:white;
+    background:linear-gradient(45deg,#ff4d6d,#ff758f);
+    box-shadow:0 8px 24px rgba(0,0,0,.28);
     cursor:pointer;
 }
 
-#capaContainer{
-    cursor:pointer;
-    text-align:center;
-}
-
-#textoRevelar{
+#chamadaFinal p{
     margin-top:10px;
     font-size:14px;
-    opacity:0.8;
+    opacity:.82;
+    text-align:center;
 }
 
-#barraContainer{
-    width:80%;
-    height:6px;
-    background:#444;
-    border-radius:10px;
-    margin:20px auto;
-    cursor:pointer;
+#surpresaFinal{
+    position:fixed;
+    inset:0;
+    z-index:10000;
+    background:linear-gradient(180deg,#16080d 0%,#3b1421 45%,#6d2437 100%);
+    overflow-y:auto;
+    -webkit-overflow-scrolling:touch;
+    padding:70px 18px 55px;
+    opacity:0;
+    visibility:hidden;
+    transition:opacity .45s ease, visibility .45s ease;
 }
 
-#barra{
-    width:0%;
-    height:100%;
-    background:#ff4d6d;
-    border-radius:10px;
+#surpresaFinal.aberta{
+    opacity:1;
+    visibility:visible;
 }
 
-#capaMusica{
-    width:200px;
-    border-radius:15px;
-    box-shadow:0 10px 25px rgba(0,0,0,0.5);
-}
-
-#tempoContainer{
-    width:100%;
-    display:flex;
-    align-items:center;
-    gap:10px;
-}
-
-#barraContainer{
-    flex:1;
-    height:4px;
-    background:#555;
-    border-radius:5px;
-    overflow:hidden;
-}
-
-#barra{
-    width:0%;
-    height:100%;
-    background:white;
-}
-
-#controles{
-    display:flex;
-    gap:40px;
-    align-items:center;
-}
-
-#controles button{
-    background:none;
+#fecharSurpresa{
+    position:fixed;
+    top:14px;
+    right:14px;
+    z-index:10002;
+    width:38px;
+    height:38px;
     border:none;
+    border-radius:50%;
+    background:rgba(255,255,255,.12);
     color:white;
     font-size:22px;
     cursor:pointer;
+    backdrop-filter:blur(8px);
 }
-#avisoProxima{
-    margin-top:15px;
-    font-size:14px;
-    opacity:0.8;
+
+.surpresa-conteudo{
+    width:min(620px,100%);
+    margin:0 auto;
     text-align:center;
+}
+
+.foto-final{
+    width:min(270px,78vw);
+    aspect-ratio:3/4;
+    object-fit:cover;
+    border-radius:24px;
+    box-shadow:0 16px 45px rgba(0,0,0,.45);
+    border:2px solid rgba(255,255,255,.18);
+    animation:entradaFoto .9s ease both;
+}
+
+@keyframes entradaFoto{
+    from{opacity:0;transform:translateY(20px) scale(.96);}
+    to{opacity:1;transform:translateY(0) scale(1);}
+}
+
+.surpresa-conteudo h2{
+    margin:22px 0 8px;
+    font-size:28px;
+}
+
+.mensagem-final{
+    margin:0 auto 34px;
+    max-width:540px;
+    line-height:1.7;
+    font-size:17px;
+    opacity:.95;
+}
+
+.bloco-surpresa{
+    margin:30px auto;
+    padding:22px 16px;
+    border-radius:22px;
+    background:rgba(255,255,255,.08);
+    border:1px solid rgba(255,255,255,.10);
+    box-shadow:0 12px 30px rgba(0,0,0,.18);
+    backdrop-filter:blur(6px);
+}
+
+.bloco-surpresa h3{
+    margin-bottom:16px;
+    font-size:21px;
+}
+
+#btnTresMotivos{
+    display:block;
+    width:min(100%,420px);
+    margin:4px auto 18px;
+    padding:14px 18px;
+    border:1px solid rgba(255,255,255,.22);
+    border-radius:999px;
+    background:rgba(255,255,255,.12);
+    color:white;
+    font-size:16px;
+    font-weight:700;
+    cursor:pointer;
+    box-shadow:0 8px 22px rgba(0,0,0,.18);
+    transition:transform .2s ease, background .2s ease, opacity .35s ease;
+}
+
+#btnTresMotivos:active{transform:scale(.97);}
+#btnTresMotivos.esconder{opacity:0;pointer-events:none;}
+
+.grade-motivos{
+    display:grid;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:10px;
+}
+
+.motivo{
+    min-height:84px;
+    padding:12px;
+    display:none;
+    align-items:center;
+    justify-content:center;
+    border-radius:16px;
+    background:rgba(255,255,255,.10);
+    font-size:14px;
+    line-height:1.35;
+    transform:translateY(12px) scale(.97);
+    opacity:0;
+}
+
+.motivo.mostrar{
+    display:flex;
+    animation:mostrarMotivo .55s ease forwards;
+}
+
+#pegadinhaMotivos{
+    display:none;
+    margin:20px 0 14px;
+    font-size:20px;
+    font-weight:800;
+    opacity:0;
+    transform:scale(.92);
+}
+
+#pegadinhaMotivos.mostrar{
+    display:block;
+    animation:mostrarPegadinha .55s ease forwards;
+}
+
+@keyframes mostrarMotivo{
+    to{transform:translateY(0) scale(1);opacity:1;}
+}
+
+@keyframes mostrarPegadinha{
+    to{transform:scale(1);opacity:1;}
+}
+
+.timeline{
+    position:relative;
+    text-align:left;
+    margin:0 auto;
+    max-width:480px;
+}
+
+.timeline::before{
+    content:"";
+    position:absolute;
+    left:11px;
+    top:8px;
+    bottom:8px;
+    width:2px;
+    background:rgba(255,255,255,.25);
+}
+
+.timeline-item{
+    position:relative;
+    padding:0 0 24px 38px;
+}
+
+.timeline-item:last-child{padding-bottom:0;}
+
+.timeline-item::before{
+    content:"❤️";
+    position:absolute;
+    left:0;
+    top:-2px;
+    font-size:20px;
+}
+
+.timeline-item strong{
+    display:block;
+    margin-bottom:4px;
+    color:#ffd6df;
+}
+
+.timeline-item span{
+    display:block;
+    line-height:1.45;
+    font-size:15px;
+    opacity:.92;
+}
+
+
+.texto-suave{
+    margin:-4px 0 16px;
+    font-size:14px;
+    line-height:1.55;
+    opacity:.84;
+}
+
+.cartas-grid{
+    display:grid;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:10px;
+}
+
+.carta-btn{
+    min-height:78px;
+    padding:13px 12px;
+    border:1px solid rgba(255,255,255,.15);
+    border-radius:17px;
+    background:linear-gradient(145deg,rgba(255,255,255,.12),rgba(255,255,255,.06));
+    color:white;
+    font-size:14px;
+    font-weight:700;
+    line-height:1.35;
+    cursor:pointer;
+    transition:transform .2s ease, background .25s ease;
+}
+.carta-btn:active{transform:scale(.98);}
+.carta-btn.aberta{background:rgba(255,143,171,.20);}
+
+.carta-mensagem{
+    grid-column:1/-1;
+    display:none;
+    padding:16px;
+    border-radius:16px;
+    background:rgba(0,0,0,.18);
+    border:1px solid rgba(255,255,255,.10);
+    font-size:15px;
+    line-height:1.65;
+    text-align:left;
+    animation:aparecerCarta .35s ease both;
+}
+.carta-mensagem.mostrar{display:block;}
+@keyframes aparecerCarta{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+
+#btnVoz, #btnPerguntaSecreta, #btnCapsula{
+    width:min(100%,470px);
+    padding:14px 18px;
+    border:none;
+    border-radius:999px;
+    background:rgba(255,255,255,.14);
+    color:white;
+    font-size:15px;
+    font-weight:800;
+    cursor:pointer;
+    border:1px solid rgba(255,255,255,.14);
+}
+
+#statusVoz{
+    margin-top:10px;
+    min-height:22px;
+    font-size:13px;
+    opacity:.78;
+}
+
+.revelacao-curta, .capsula-conteudo{
+    display:none;
+    margin-top:14px;
+    padding:18px;
+    border-radius:18px;
+    background:rgba(255,255,255,.09);
+    border:1px solid rgba(255,255,255,.12);
+    line-height:1.65;
+    animation:aparecerCarta .4s ease both;
+}
+.revelacao-curta.mostrar, .capsula-conteudo.mostrar{display:block;}
+
+.revelacao-curta{
+    font-size:20px;
+    font-weight:800;
+}
+
+.capsula-conteudo{
+    text-align:left;
+    font-size:15px;
+}
+
+
+#btnCartasRapidas{
+    position:fixed;
+    bottom:12px;
+    left:8px;
+    width:34px;
+    height:34px;
+    border:1px solid rgba(255,255,255,.18);
+    border-radius:50%;
+    background:rgba(0,0,0,.22);
+    color:white;
+    font-size:17px;
+    cursor:pointer;
+    z-index:40;
+    opacity:0;
+    pointer-events:none;
+    transform:scale(.9);
+    backdrop-filter:blur(5px);
+    transition:opacity .35s ease, transform .25s ease, background .25s ease;
+}
+#btnCartasRapidas.mostrar{
+    opacity:.76;
+    pointer-events:auto;
+    transform:scale(1);
+}
+#btnCartasRapidas:active{transform:scale(.92);}
+#btnCartasRapidas:hover,
+#btnCartasRapidas:focus-visible{
+    opacity:1;
+    background:rgba(0,0,0,.40);
+}
+
+#cartasRapidas{
+    position:fixed;
+    inset:0;
+    z-index:15000;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:58px 18px 28px;
+    background:rgba(18,5,10,.92);
+    backdrop-filter:blur(10px);
+    opacity:0;
+    visibility:hidden;
+    transition:opacity .35s ease, visibility .35s ease;
+}
+#cartasRapidas.aberta{
+    opacity:1;
+    visibility:visible;
+}
+.cartas-rapidas-conteudo{
+    width:min(560px,100%);
+    max-height:calc(100vh - 86px);
+    overflow-y:auto;
+    -webkit-overflow-scrolling:touch;
+    padding:24px 16px 28px;
+    border-radius:24px;
+    background:linear-gradient(180deg,rgba(255,255,255,.11),rgba(255,255,255,.06));
+    border:1px solid rgba(255,255,255,.13);
+    box-shadow:0 18px 55px rgba(0,0,0,.45);
+    text-align:center;
+}
+.cartas-rapidas-conteudo h2{
+    margin-bottom:8px;
+    font-size:26px;
+}
+#fecharCartasRapidas{
+    position:fixed;
+    top:14px;
+    right:14px;
+    width:38px;
+    height:38px;
+    border:none;
+    border-radius:50%;
+    background:rgba(255,255,255,.12);
+    color:white;
+    font-size:22px;
+    cursor:pointer;
+    z-index:15001;
+    backdrop-filter:blur(8px);
+}
+
+
+.carta-secreta{
+    display:none;
+    grid-column:1/-1;
+    min-height:64px;
+    background:linear-gradient(135deg,rgba(255,77,109,.24),rgba(255,255,255,.08));
+    border-color:rgba(255,182,193,.32);
+    animation:aparecerCartaSecreta .7s ease both;
+}
+.carta-secreta.mostrar{display:block;}
+.carta-mensagem-secreta{
+    background:linear-gradient(145deg,rgba(255,77,109,.16),rgba(0,0,0,.22));
+    border-color:rgba(255,182,193,.24);
+}
+@keyframes aparecerCartaSecreta{
+    from{opacity:0;transform:translateY(14px) scale(.97);}
+    to{opacity:1;transform:translateY(0) scale(1);}
+}
+
+
+.grade-sonhos{
+    display:grid;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:10px;
+}
+
+.sonho-card{
+    min-height:105px;
+    padding:15px 12px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:7px;
+    border-radius:17px;
+    background:linear-gradient(145deg,rgba(255,255,255,.12),rgba(255,255,255,.06));
+    border:1px solid rgba(255,255,255,.10);
+    line-height:1.35;
+}
+
+.sonho-card .icone-sonho{font-size:28px;}
+.sonho-card strong{font-size:14px;}
+
+
+.final-suspense{
+    padding-top:28px;
+    padding-bottom:32px;
+}
+
+#btnFinalCinema{
+    width:min(100%,470px);
+    padding:16px 20px;
+    border:none;
+    border-radius:999px;
+    background:linear-gradient(45deg,#ff4d6d,#ff8fab);
+    color:white;
+    font-size:16px;
+    font-weight:800;
+    line-height:1.35;
+    cursor:pointer;
+    box-shadow:0 10px 30px rgba(255,77,109,.24);
+    animation:pulseBotaoFinal 1.8s ease-in-out infinite;
+}
+
+@keyframes pulseBotaoFinal{
+    0%,100%{transform:scale(1);box-shadow:0 10px 30px rgba(255,77,109,.22);}
+    50%{transform:scale(1.025);box-shadow:0 13px 38px rgba(255,77,109,.38);}
+}
+
+
+#finalCinema{
+    position:fixed;
+    inset:0;
+    z-index:20000;
+    display:flex;
+    align-items:flex-start;
+    justify-content:center;
+    padding:28px 18px;
+    overflow-x:hidden;
+    overflow-y:auto;
+    background:radial-gradient(circle at center,#38131f 0%,#14070c 46%,#050203 100%);
+    opacity:0;
+    visibility:hidden;
+    transition:opacity 1s ease, visibility 1s ease;
+}
+
+#finalCinema.ativo{opacity:1;visibility:visible;}
+
+#finalCinema::before,
+#finalCinema::after{
+    content:"";
+    position:absolute;
+    inset:-25%;
+    pointer-events:none;
+}
+
+#finalCinema::before{
+    background-image:radial-gradient(circle,rgba(255,255,255,.75) 0 1px,transparent 1.6px);
+    background-size:48px 48px;
+    opacity:.13;
+    animation:moverEstrelas 18s linear infinite;
+}
+
+#finalCinema::after{
+    background:radial-gradient(circle at 50% 42%,rgba(255,116,145,.19),transparent 34%);
+    animation:respirarLuz 4s ease-in-out infinite;
+}
+
+@keyframes moverEstrelas{to{transform:translateY(48px);}}
+@keyframes respirarLuz{0%,100%{opacity:.55;transform:scale(.95);}50%{opacity:1;transform:scale(1.08);}}
+
+.cinema-conteudo{
+    position:relative;
+    z-index:2;
+    width:min(620px,100%);
+    text-align:center;
+    padding:34px 0 72px;
+}
+
+.cinema-foto{
+    width:min(250px,68vw);
+    aspect-ratio:3/4;
+    object-fit:cover;
+    border-radius:24px;
+    border:1px solid rgba(255,255,255,.18);
+    box-shadow:0 18px 55px rgba(0,0,0,.65);
+    opacity:0;
+    transform:translateY(25px) scale(.94);
+}
+
+.cinema-linha{
+    margin:0 auto;
+    max-width:560px;
+    opacity:0;
+    transform:translateY(18px);
+    text-shadow:0 3px 16px rgba(0,0,0,.7);
+}
+
+.cinema-linha.pequena{font-size:17px;opacity:0;}
+.cinema-linha.grande{font-size:30px;font-weight:800;line-height:1.25;}
+.cinema-linha.final{font-size:19px;font-weight:650;line-height:1.65;margin-top:22px;}
+
+.cinema-impacto{
+    max-width:900px;
+    margin:22px auto 4px;
+    font-size:clamp(28px,6.6vw,58px);
+    font-weight:1000;
+    line-height:1.08;
+    letter-spacing:-1.2px;
+    text-transform:uppercase;
+    text-wrap:balance;
+    background:linear-gradient(180deg,#fff 0%,#ffd6df 58%,#ff8fab 100%);
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
+    filter:drop-shadow(0 5px 24px rgba(255,80,120,.25));
+}
+
+#finalCinema.ativo .cinema-linha-1{animation:cinemaEntrada .9s .8s forwards;}
+#finalCinema.ativo .cinema-linha-2{animation:cinemaEntrada .9s 2.1s forwards;}
+#finalCinema.ativo .cinema-foto{animation:cinemaFoto 1.2s 3.6s forwards;}
+#finalCinema.ativo .cinema-linha-3{animation:cinemaEntrada .9s 5s forwards;}
+#finalCinema.ativo .cinema-linha-4{animation:cinemaEntrada .9s 6.7s forwards;}
+#finalCinema.ativo .cinema-linha-5{animation:cinemaEntrada .9s 8.5s forwards;}
+#finalCinema.ativo .cinema-impacto{animation:cinemaImpacto 1.3s 10.5s forwards;}
+#finalCinema.ativo .cinema-linha-6{animation:cinemaEntrada .9s 12.7s forwards;}
+#finalCinema.ativo .cinema-linha-7{animation:cinemaEntrada .9s 14.5s forwards;}
+#finalCinema.ativo .cinema-linha-8{animation:cinemaEntrada 1.1s 16.3s forwards;}
+#finalCinema.ativo .cinema-linha-9{animation:cinemaEntrada 1s 18.4s forwards;}
+#finalCinema.ativo #btnVoltarHistoria{animation:cinemaEntrada .9s 20.7s forwards;}
+
+@keyframes cinemaEntrada{to{opacity:1;transform:translateY(0);}}
+@keyframes cinemaImpacto{
+    0%{opacity:0;transform:scale(.72) translateY(22px);filter:blur(8px);}
+    70%{opacity:1;transform:scale(1.045) translateY(0);filter:blur(0);}
+    100%{opacity:1;transform:scale(1) translateY(0);filter:blur(0);}
+}
+@keyframes cinemaFoto{to{opacity:1;transform:translateY(0) scale(1);}}
+
+#btnVoltarHistoria{
+    margin-top:22px;
+    padding:11px 18px;
+    border:1px solid rgba(255,255,255,.20);
+    border-radius:999px;
+    background:rgba(255,255,255,.09);
+    color:white;
+    font-size:14px;
+    cursor:pointer;
+    opacity:0;
+    transform:translateY(18px);
+}
+
+
+#encerramentoFinal{
+    position:fixed;
+    inset:0;
+    z-index:30000;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:30px 20px;
+    overflow-y:auto;
+    background:
+        radial-gradient(circle at 50% 34%,rgba(255,80,120,.16),transparent 32%),
+        linear-gradient(180deg,#090306 0%,#16080d 55%,#050203 100%);
+    opacity:0;
+    visibility:hidden;
+    transition:opacity 1.1s ease, visibility 1.1s ease;
+}
+
+#encerramentoFinal.ativo{
+    opacity:1;
+    visibility:visible;
+}
+
+#encerramentoFinal::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    background-image:radial-gradient(circle,rgba(255,255,255,.7) 0 1px,transparent 1.5px);
+    background-size:54px 54px;
+    opacity:.08;
+    animation:moverEstrelas 22s linear infinite;
+}
+
+.encerramento-conteudo{
+    position:relative;
+    z-index:2;
+    width:min(650px,100%);
+    margin:auto;
+    text-align:center;
+    padding:54px 0;
+}
+
+.encerramento-mini,
+.encerramento-titulo,
+.encerramento-texto,
+.encerramento-impacto,
+.encerramento-assinatura,
+#btnRecomecar{
+    opacity:0;
+    transform:translateY(20px);
+}
+
+.encerramento-mini{
+    font-size:15px;
+    letter-spacing:.08em;
+    text-transform:uppercase;
+    opacity:0;
+    color:#ffc6d3;
+}
+
+.encerramento-titulo{
+    margin:14px auto 24px;
+    font-size:clamp(31px,8vw,56px);
+    line-height:1.05;
+    font-weight:900;
+    text-wrap:balance;
+}
+
+.encerramento-texto{
+    max-width:570px;
+    margin:0 auto;
+    font-size:17px;
+    line-height:1.8;
+    color:rgba(255,255,255,.92);
+}
+
+.encerramento-impacto{
+    max-width:620px;
+    margin:34px auto 0;
+    font-size:clamp(23px,6vw,38px);
+    line-height:1.25;
+    font-weight:900;
+    background:linear-gradient(180deg,#fff 0%,#ffd0da 60%,#ff8fab 100%);
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
+    filter:drop-shadow(0 4px 20px rgba(255,80,120,.22));
+}
+
+.encerramento-assinatura{
+    margin-top:26px;
+    font-size:19px;
+    font-weight:700;
+    color:#ffd6df;
+}
+
+#btnRecomecar{
+    margin-top:38px;
+    padding:13px 22px;
+    border:1px solid rgba(255,255,255,.18);
+    border-radius:999px;
+    background:rgba(255,255,255,.07);
+    color:white;
+    font-size:14px;
+    cursor:pointer;
+    transition:transform .25s ease, background .25s ease, box-shadow .25s ease;
+}
+#btnRecomecar:active{transform:scale(.97);}
+#btnRecomecar:hover{background:rgba(255,255,255,.12);box-shadow:0 8px 28px rgba(255,80,120,.16);}
+
+
+#fadeCinemaFim{
+    position:fixed;
+    inset:0;
+    z-index:50000;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    overflow:hidden;
+    background:#000;
+    opacity:0;
+    visibility:hidden;
+    pointer-events:none;
+    transition:opacity 2.2s ease, visibility 2.2s ease;
+}
+#fadeCinemaFim.ativo{
+    opacity:1;
+    visibility:visible;
+    pointer-events:auto;
+}
+#fadeCinemaFim::before{
+    content:"";
+    position:absolute;
+    inset:-20%;
+    background:radial-gradient(circle at center,rgba(255,86,120,.16),transparent 34%);
+    opacity:0;
+    transform:scale(.8);
+}
+#fadeCinemaFim.ativo::before{animation:ultimoBrilho 4.5s ease forwards;}
+@keyframes ultimoBrilho{
+    0%{opacity:0;transform:scale(.8);}
+    35%{opacity:.9;transform:scale(1.05);}
+    100%{opacity:0;transform:scale(1.3);}
+}
+.fade-fim-conteudo{
+    position:relative;
+    z-index:2;
+    width:min(620px,88vw);
+    text-align:center;
+    padding:24px;
+}
+.fade-fim-linha,
+#btnReverTudo{
+    opacity:0;
+    transform:translateY(16px);
+}
+.fade-fim-linha.primeira{
+    font-size:16px;
+    letter-spacing:.08em;
+    text-transform:uppercase;
+    color:rgba(255,255,255,.72);
+}
+.fade-fim-linha.final{
+    margin-top:18px;
+    font-size:clamp(30px,8vw,58px);
+    line-height:1.1;
+    font-weight:900;
+    color:white;
+    text-shadow:0 0 30px rgba(255,90,130,.28);
+}
+.fade-fim-linha.sub{
+    margin-top:22px;
+    font-size:18px;
+    color:#ffd6df;
+}
+#fadeCinemaFim.ativo .fade-fim-linha.primeira{animation:cinemaEntrada 1s 1.4s forwards;}
+#fadeCinemaFim.ativo .fade-fim-linha.final{animation:cinemaImpacto 1.3s 2.8s forwards;}
+#fadeCinemaFim.ativo .fade-fim-linha.sub{animation:cinemaEntrada 1s 4.8s forwards;}
+#fadeCinemaFim.ativo #btnReverTudo{animation:cinemaEntrada .9s 6.4s forwards;}
+#btnReverTudo{
+    margin-top:34px;
+    padding:10px 16px;
+    border:1px solid rgba(255,255,255,.14);
+    border-radius:999px;
+    background:rgba(255,255,255,.04);
+    color:rgba(255,255,255,.68);
+    font-size:13px;
+    cursor:pointer;
+}
+
+#encerramentoFinal.ativo .encerramento-mini{animation:cinemaEntrada .9s .6s forwards;}
+#encerramentoFinal.ativo .encerramento-titulo{animation:cinemaEntrada 1s 1.8s forwards;}
+#encerramentoFinal.ativo .encerramento-texto{animation:cinemaEntrada 1.1s 3.3s forwards;}
+#encerramentoFinal.ativo .encerramento-impacto{animation:cinemaImpacto 1.3s 5.8s forwards;}
+#encerramentoFinal.ativo .encerramento-assinatura{animation:cinemaEntrada 1s 7.5s forwards;}
+#encerramentoFinal.ativo #btnRecomecar{animation:cinemaEntrada .9s 9s forwards;}
+
+
+.festa-aniversario{
+    position:fixed;
+    top:-45px;
+    z-index:9000;
+    pointer-events:none;
+    animation:cairFesta linear forwards;
+    will-change:transform,opacity;
+}
+
+@keyframes cairFesta{
+    0%{transform:translate3d(0,-30px,0) rotate(0deg);opacity:0;}
+    10%{opacity:1;}
+    100%{transform:translate3d(var(--desvio),110vh,0) rotate(540deg);opacity:.15;}
+}
+
+.explosao-final{
+    position:fixed;
+    pointer-events:none;
+    z-index:10003;
+    animation:explodirFinal 1.1s ease-out forwards;
+}
+
+@keyframes explodirFinal{
+    from{transform:translate(0,0) scale(.7);opacity:1;}
+    to{transform:translate(var(--x),var(--y)) scale(1.35);opacity:0;}
+}
+
+@media (max-width:520px){
+    .grade-motivos{grid-template-columns:1fr;}
+    .grade-sonhos{grid-template-columns:1fr;}
+    .cartas-grid{grid-template-columns:1fr;}
+    .motivo{min-height:68px;}
+    .surpresa-conteudo h2{font-size:25px;}
+    .mensagem-final{font-size:16px;}
+    .cinema-linha.grande{font-size:26px;}
+    .cinema-linha.final{font-size:18px;}
+    .cinema-foto{width:min(190px,55vw);}
+    .cinema-impacto{font-size:clamp(28px,8.8vw,42px);letter-spacing:-.7px;line-height:1.08;}
 }
 
 #listaAmor {
@@ -341,96 +1033,248 @@ body{
 #listaAmor li {
     margin: 0;
 }
-</style>    
-</head>    
-<body>    
-    
-<!-- TELA PRETA -->    
-<div id="startScreen">    
-    <div class="heart-btn" onclick="abrir()">❤️</div>    
-    <p>Clique no coração</p>    
-</div>    
-    
-<!-- CRONÔMETRO -->    
-<div id="contador"></div>    
-    
-<audio id="musica"></audio>
+</style>
+</head>
+<body>
 
-<!-- FUNDO -->    
+
+<div id="startScreen">
+    <div class="heart-btn" onclick="abrir()">❤️</div>
+    <p>Clique no coração</p>
+</div>
+
+
+<div id="contador"></div>
+
+<audio id="musica" src="duas-metades.mp3" preload="auto" playsinline></audio>
+<audio id="vozMensagem" src="mensagem-voz.mp3" preload="none" playsinline></audio>
+
+
 <div id="background">
-    <img src="foto1.jpg" class="foto esq1">    
-    <img src="foto2.jpg" class="foto dir1">    
-    <img src="foto3.jpg" class="foto esq2">    
-    <img src="foto4.jpg" class="foto dir2">    
+    <img src="foto1.jpg" class="foto esq1">
+    <img src="foto2.jpg" class="foto dir1">
+    <img src="foto3.jpg" class="foto esq2">
+    <img src="foto4.jpg" class="foto dir2">
     <img src="foto5.jpg" class="foto dirTop">
     <img src="foto6.jpg" class="foto esqTop">
 </div>
 
 <div id="content">
     <div id="texto"></div>
-    <button id="btnMusica" onclick="abrirPlayer(event)">🎵Clique aqui para ver as musicas que nos define🎵</button>
-</div>
+    <div id="fimTexto" aria-hidden="true"></div>
 
-<div id="telaPlayer">
-  <div class="playerBox">
-
-    <div id="misterio">?</div>
-    <p id="textoRevelar">Clique aqui para revelar</p>
-
-
-<div id="spotifyFake">
-
-  <img src="capa.jpg" id="capaMusica">
-
-  <h2>Duas Metades - Ao Vivo</h2>
-  <p>Jorge & Mateus</p>
-
-  <div id="tempoContainer">
-    <span id="tempoAtual">0:00</span>
-    <div id="barraContainer">
-      <div id="barra"></div>
+    <div id="chamadaFinal" aria-live="polite">
+        <button id="btnSurpresaFinal" type="button" onclick="abrirSurpresaFinal()">Ainda tenho mais uma coisa para te dizer ❤️</button>
+        <p>Quando terminar de ler, toque aqui.</p>
     </div>
-    <span id="tempoTotal">0:00</span>
-  </div>
-
-  <div id="controles">
-  <button onclick="voltarMusica()">⏮</button>
-  <button onclick="tocarMusica()">▶</button>
-  <button onclick="proximaMusica()">⏭</button>
-</div>
-<h4 id="avisoProxima">Clique no ⏭ para passar para a próxima música</h4>
 </div>
 
-<script>    
+
+<div id="surpresaFinal" aria-hidden="true">
+    <button id="fecharSurpresa" type="button" onclick="fecharSurpresaFinal()" aria-label="Fechar surpresa">×</button>
+    <div class="surpresa-conteudo">
+        <img src="foto1.jpg" alt="Uma memória especial nossa" class="foto-final">
+        <h2>Só mais uma coisinha... ❤️</h2>
+        <p class="mensagem-final">Se eu pudesse guardar uma certeza para todos os dias, seria esta: eu quero continuar vivendo momentos, criando memórias e descobrindo até onde tudo isso pode chegar com você. Feliz aniversário, minha princesa. Você é muito especial para mim. ❤️</p>
+
+        <section class="bloco-surpresa" aria-labelledby="tituloMotivos">
+            <h3 id="tituloMotivos">Tenho uma coisinha para te mostrar... ❤️</h3>
+            <button id="btnTresMotivos" type="button" onclick="revelarTresMotivos()">Clique aqui para ver 3 coisas que eu amo em você ❤️</button>
+            <div id="primeirosMotivos" class="grade-motivos"></div>
+            <p id="pegadinhaMotivos">Achou mesmo que seriam só 3? 😏❤️</p>
+            <div id="maisMotivos" class="grade-motivos"></div>
+        </section>
+
+        <section class="bloco-surpresa" aria-labelledby="tituloLinhaTempo">
+            <h3 id="tituloLinhaTempo">Um pedacinho do que já vivemos — e do que ainda quero viver 🗓️</h3>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <strong>Quando você começou a se tornar especial para mim ❤️</strong>
+                    <span>Não foi preciso uma data específica. Aos poucos, você simplesmente foi ganhando um espaço enorme em mim.</span>
+                </div>
+                <div class="timeline-item">
+                    <strong>14/06/2026 — Nosso primeiro beijo 💋</strong>
+                    <span>Um daqueles momentos que eu sei que vou querer guardar na memória por muito tempo. ❤️</span>
+                </div>
+                <div class="timeline-item">
+                    <strong>Tudo que ainda pode vir ✨</strong>
+                    <span>A parte mais bonita é pensar que ainda existem muitos primeiros momentos, memórias e capítulos que eu gostaria de transformar em realidade com você.</span>
+                </div>
+            </div>
+        </section>
+        <section class="bloco-surpresa" aria-labelledby="tituloVoz">
+            <h3 id="tituloVoz">Tem uma coisa que eu queria te falar com a minha própria voz... 🎙️❤️</h3>
+            <p class="texto-suave">Porque algumas coisas ficam ainda mais especiais quando não são apenas escritas.</p>
+            <button id="btnVoz" type="button" onclick="alternarMensagemVoz()">▶ Ouvir minha mensagem</button>
+            <p id="statusVoz"></p>
+        </section>
+
+        <section class="bloco-surpresa" aria-labelledby="tituloSonhos">
+            <h3 id="tituloSonhos">Sonhos que eu quero transformar em realidade com você ✨</h3>
+            <p class="texto-suave">Hoje alguns deles ainda são só imaginação, vontade e esperança. Mas, se depender de mim, eu quero fazer o possível para que um dia eles deixem de ser sonhos e virem lembranças nossas. ❤️</p>
+            <div class="grade-sonhos">
+                <div class="sonho-card"><span class="icone-sonho">💞</span><strong>Ver essa conexão crescer e, quem sabe, se transformar em uma história realmente nossa</strong></div>
+                <div class="sonho-card"><span class="icone-sonho">💋</span><strong>Viver com você aqueles primeiros momentos que hoje eu só consigo imaginar</strong></div>
+                <div class="sonho-card"><span class="icone-sonho">✈️</span><strong>Viajar juntos, conhecer lugares novos e voltar para casa carregando histórias para contar</strong></div>
+                <div class="sonho-card"><span class="icone-sonho">📸</span><strong>Encher a galeria de fotos que um dia façam a gente parar, olhar e lembrar de como tudo começou</strong></div>
+                <div class="sonho-card"><span class="icone-sonho">🤍</span><strong>Ser alguém com quem você possa dividir tanto os dias incríveis quanto aqueles em que tudo parece dar errado</strong></div>
+                <div class="sonho-card"><span class="icone-sonho">🌙</span><strong>Transformar planos, conversas e sonhos distantes em momentos reais que a gente viveu lado a lado</strong></div>
+            </div>
+        </section>
+
+        <section class="bloco-surpresa" aria-labelledby="tituloPerguntaSecreta">
+            <h3 id="tituloPerguntaSecreta">Se um dia você se perguntar... 💭</h3>
+            <p class="texto-suave">“Se pudesse voltar para o começo, você ainda escolheria me conhecer e ter tudo isso comigo?”</p>
+            <button id="btnPerguntaSecreta" type="button" onclick="revelarRespostaSecreta()">Clique para descobrir ❤️</button>
+            <div id="respostaSecreta" class="revelacao-curta">Sim. Sem pensar duas vezes. Eu escolheria conhecer você de novo. ❤️</div>
+        </section>
+
+        <section class="bloco-surpresa" aria-labelledby="tituloCapsula">
+            <h3 id="tituloCapsula">Uma cápsula do tempo para nós ⏳❤️</h3>
+            <p class="texto-suave">Talvez hoje muita coisa ainda seja um sonho. Por isso eu queria deixar algumas palavras guardadas para a gente encontrar de novo no futuro.</p>
+            <button id="btnCapsula" type="button" onclick="abrirCapsulaTempo()">Abrir a cápsula do tempo ✨</button>
+            <div id="capsulaConteudo" class="capsula-conteudo">
+                <strong>Para nós, no futuro...</strong><br><br>
+                Se você está lendo isso de novo depois de algum tempo, eu espero que a vida tenha nos dado muitas histórias novas para contar. Talvez algumas das coisas que eu imaginei aqui tenham acontecido; talvez outras tenham mudado completamente. E tudo bem.<br><br>
+                O que eu mais espero é que a gente consiga olhar para trás com carinho para essa fase em que tanta coisa ainda estava começando. Que existam fotos que hoje ainda não tiramos, lugares que ainda não conhecemos, piadas que ainda não inventamos e memórias que, neste momento, nem sabemos que um dia vão ser importantes.<br><br>
+                E se a nossa história tiver crescido do jeito que eu espero, lembra de uma coisa: antes de muita coisa acontecer, eu já estava aqui torcendo para viver tudo isso com você. ❤️
+            </div>
+        </section>
+
+        <section class="bloco-surpresa final-suspense" aria-labelledby="tituloUltimaSurpresa">
+            <h3 id="tituloUltimaSurpresa">Eu poderia terminar por aqui... 👀</h3>
+            <p class="texto-suave">Mas ainda falta uma última coisinha.</p>
+            <button id="btnFinalCinema" type="button" onclick="iniciarFinalCinematografico()">Não acabou ainda… tenho mais uma surpresa para você ❤️</button>
+        </section>
+    </div>
+</div>
+
+
+<div id="cartasRapidas" aria-hidden="true">
+    <button id="fecharCartasRapidas" type="button" onclick="fecharCartasRapidas()" aria-label="Fechar cartinhas">×</button>
+    <div class="cartas-rapidas-conteudo">
+        <h2>Abra quando... 💌</h2>
+        <p class="texto-suave">Guardei algumas palavras para você abrir justamente quando precisar delas. Você pode voltar aqui quando quiser. ❤️</p>
+
+        <div class="cartas-grid">
+            <button class="carta-btn" data-carta-normal="triste" type="button" onclick="abrirCarta('triste', this)">🌧️ Abra quando estiver triste</button>
+            <button class="carta-btn" data-carta-normal="saudade" type="button" onclick="abrirCarta('saudade', this)">🥺 Abra quando sentir saudade</button>
+            <button class="carta-btn" data-carta-normal="insegura" type="button" onclick="abrirCarta('insegura', this)">🤍 Abra quando estiver insegura</button>
+            <button class="carta-btn" data-carta-normal="dificil" type="button" onclick="abrirCarta('dificil', this)">🌙 Abra quando o dia estiver difícil</button>
+            <button class="carta-btn" data-carta-normal="semsono" type="button" onclick="abrirCarta('semsono', this)">🌙 Abra quando não conseguir dormir</button>
+            <button class="carta-btn" data-carta-normal="insuficiente" type="button" onclick="abrirCarta('insuficiente', this)">🥹 Abra quando achar que não é suficiente</button>
+            <button class="carta-btn" data-carta-normal="motivacao" type="button" onclick="abrirCarta('motivacao', this)">💪 Abra quando precisar de motivação</button>
+            <button class="carta-btn" data-carta-normal="feliz" type="button" onclick="abrirCarta('feliz', this)">😊 Abra quando estiver muito feliz</button>
+            <button class="carta-btn" data-carta-normal="abraco" type="button" onclick="abrirCarta('abraco', this)">🫂 Abra quando precisar de um abraço</button>
+            <button class="carta-btn" data-carta-normal="pensando" type="button" onclick="abrirCarta('pensando', this)">💭 Abra quando estiver pensando demais</button>
+            <button class="carta-btn" data-carta-normal="oqueve" type="button" onclick="abrirCarta('oqueve', this)">❤️ Abra quando quiser saber o que eu vejo em você</button>
+
+            <button id="btnCartaSecreta" class="carta-btn carta-secreta" type="button" onclick="abrirCarta('secreta', this)">🔒 Achou que já tinha aberto todas? ❤️</button>
+
+            <div id="carta-triste" class="carta-mensagem">Se hoje não estiver sendo um dia bom, eu só queria que você lembrasse que um momento ruim nunca diminui a pessoa incrível que você é. Você merece carinho, paciência e dias mais leves. E, mesmo que eu não consiga resolver tudo, eu espero conseguir pelo menos arrancar um sorriso seu. ❤️</div>
+            <div id="carta-saudade" class="carta-mensagem">Se bateu saudade, então guarda uma coisa: provavelmente existe uma chance enorme de eu também estar pensando em você. Até a distância mais chata fica um pouco menor quando a gente sabe que existe alguém do outro lado querendo estar perto. ❤️</div>
+            <div id="carta-insegura" class="carta-mensagem">Se algum dia você duvidar de si mesma, volta aqui. Você tem um jeito único, um sorriso que marca, uma presença que faz diferença e qualidades que talvez nem perceba todos os dias. Eu espero que você nunca esqueça o quanto é especial. 🤍</div>
+            <div id="carta-dificil" class="carta-mensagem">Se o dia estiver pesado, não precisa vencer tudo de uma vez. Descansa, respira, cuida de você e lembra que amanhã é uma nova chance. E quando quiser companhia, conversa ou apenas alguém por perto, eu gostaria muito de ser uma dessas pessoas para você. 🌙❤️</div>
+            <div id="carta-semsono" class="carta-mensagem">Se o sono não vier, imagina que eu estou aí do seu lado fazendo companhia por alguns minutos. Não precisa resolver o amanhã agora. Deixa o mundo ficar quietinho um pouco, fecha os olhos e lembra de alguma coisa que fez você sorrir hoje. E, se nenhuma vier à cabeça, pode lembrar que existe alguém aqui que sorri só de pensar em você. 🌙❤️</div>
+            <div id="carta-insuficiente" class="carta-mensagem">Se hoje você estiver achando que não é suficiente, eu queria conseguir te emprestar meus olhos por alguns minutos. Talvez assim você enxergasse o tanto de coisa bonita que eu vejo em você: seu jeito, sua força, sua presença, seus detalhes e até aquelas pequenas coisas que você provavelmente nem percebe. Você não precisa ser perfeita para ser extremamente especial. Para mim, você já é. 🤍</div>
+            <div id="carta-motivacao" class="carta-mensagem">Se estiver difícil continuar, não pensa em tudo que ainda falta. Pensa só no próximo passo. Depois no próximo. Eu sei que nem sempre você vai se sentir forte ou motivada, mas eu espero que nunca esqueça do quanto é capaz. E quando você conquistar aquilo pelo que está lutando, eu quero ser uma das pessoas a dizer: “eu sabia que você conseguiria”. 💪❤️</div>
+            <div id="carta-feliz" class="carta-mensagem">Se você abriu isso porque está muito feliz, então aproveita esse momento de verdade. Guarda essa sensação, comemora, sorri muito e não diminui a importância do que aconteceu. E mesmo que eu não esteja aí exatamente agora, imagina eu comemorando junto com você, porque ver você feliz também seria motivo para eu ficar feliz. 😊❤️</div>
+            <div id="carta-abraco" class="carta-mensagem">Essa carta não consegue te abraçar de verdade, então vai ter que servir como um vale provisório. 🫂 Imagina aquele abraço demorado, sem pressa para soltar, daqueles que fazem o resto do mundo ficar um pouco mais distante. Quando eu puder, quero trocar esse abraço escrito por um de verdade. ❤️</div>
+            <div id="carta-pensando" class="carta-mensagem">Se sua cabeça estiver cheia de pensamentos, tenta não cobrar de você uma resposta para tudo ao mesmo tempo. Algumas coisas podem esperar. Algumas dúvidas só ficam claras com o tempo. Por enquanto, fica aqui por alguns segundos, respira e lembra que você não precisa carregar o mundo inteiro de uma vez. 💭🤍</div>
+            <div id="carta-oqueve" class="carta-mensagem">O que eu vejo em você? Eu vejo alguém que conseguiu se tornar especial para mim de um jeito que eu não planejei. Vejo um sorriso que eu gosto de imaginar, um jeito que eu reconheceria em qualquer lugar e uma pessoa com quem eu gostaria de viver muitas coisas que hoje ainda são só planos. Eu poderia escrever muito mais, mas talvez a resposta mais simples seja: eu vejo você... e gosto muito do que vejo. ❤️</div>
+            <div id="carta-secreta" class="carta-mensagem carta-mensagem-secreta"><strong>Achou mesmo que eu ia deixar você ir embora sem mais uma? 😏❤️</strong><br><br>Se você chegou até aqui e abriu todas essas mensagens, então provavelmente já percebeu que eu queria deixar um pedacinho meu guardado em cada uma delas. Talvez eu não consiga estar perto em todos os momentos, talvez eu nem sempre encontre as palavras certas na hora certa, mas eu queria que este cantinho pudesse te lembrar de uma coisa: você é alguém que eu quero cuidar, apoiar, fazer sorrir e ter por perto.<br><br>E se nenhum dos botões anteriores combinar exatamente com o que você estiver sentindo, abre esta aqui. Ela serve para qualquer dia, qualquer hora e qualquer motivo: <strong>eu estou muito feliz por ter conhecido você e espero que a vida ainda nos dê muitos motivos para voltar aqui e sorrir juntos. Eu te amo muito. ❤️</strong></div>
+        </div>
+    </div>
+</div>
+
+<div id="finalCinema" aria-hidden="true">
+    <div class="cinema-conteudo">
+        <p class="cinema-linha cinema-linha-1 pequena">Eu poderia ter terminado ali...</p>
+        <h2 class="cinema-linha cinema-linha-2 grande">Mas ainda faltava a parte que eu mais queria que você soubesse. ❤️</h2>
+        <img src="foto1.jpg" alt="Uma foto especial" class="cinema-foto">
+
+        <p class="cinema-linha cinema-linha-3 final">Talvez a gente ainda esteja no começo de tudo. Ainda existem momentos que eu só consigo imaginar, lugares em que eu ainda quero estar com você, conversas que ainda não tivemos e lembranças que ainda nem existem. E, mesmo assim, você já conseguiu se tornar alguém muito especial para mim.</p>
+
+        <p class="cinema-linha cinema-linha-4 final">Eu gosto de pensar que as melhores histórias não começam quando tudo já está decidido. Elas começam aos poucos: em uma conversa que dura mais do que o esperado, em uma risada que fica na cabeça depois, na vontade de mandar mensagem sem motivo e naquele sorriso involuntário quando o nome de uma pessoa aparece na tela. E foi desse jeito, aos poucos, que você foi ocupando um espaço que eu nem percebi quando ficou tão grande.</p>
+
+        <p class="cinema-linha cinema-linha-5 final">Eu não quero prometer um futuro que ninguém consegue prever. O que eu posso dizer é que existe uma parte de mim que torce muito para que vários dos sonhos que coloquei aqui deixem de ser apenas imaginação. Quero viver nossos primeiros momentos, criar memórias de verdade, estar presente nas suas conquistas, te apoiar nos dias difíceis e ter um monte de histórias para lembrar com você.</p>
+
+        <div class="cinema-linha cinema-impacto">EU NÃO SEI EXATAMENTE COMO VAI SER O NOSSO FUTURO, MAS, SE EU PUDESSE ESCOLHER, EU QUERIA MUITO QUE VOCÊ FIZESSE PARTE DELE. ❤️</div>
+
+        <p class="cinema-linha cinema-linha-6 final">Talvez um dia a gente volte para esse site e dê risada de tudo que ainda era apenas um sonho. Talvez algumas dessas coisas aconteçam de um jeito completamente diferente do que eu imaginei. Mas seria muito bonito olhar para trás e perceber que aquilo que um dia eu escrevi pensando em você acabou se transformando em momentos que nós realmente vivemos.</p>
+
+        <p class="cinema-linha cinema-linha-7 final">Então guarda isso como uma pequena lembrança de hoje: em meio a tantas pessoas, tantas possibilidades e tantos caminhos, existe alguém aqui que olha para você com um carinho enorme e que gostaria muito de descobrir até onde essa história pode chegar.</p>
+
+        <p class="cinema-linha cinema-linha-8 final"><strong>E se um dia todos esses sonhos virarem realidade, eu espero poder olhar para você e dizer: “lembra quando tudo isso ainda era só uma surpresa em um site?”</strong><br><br>Feliz aniversário, minha princesa. Espero que esse seja apenas o começo de muitas coisas bonitas que ainda podem acontecer. ❤️</p>
+
+        <p class="cinema-linha cinema-linha-9 final"><strong>E quando sentir saudade de mim... 💌</strong><br><br>Eu deixei algumas mensagens guardadas especialmente para esses momentos. Quando voltar aqui, é só apertar no ❤️ para entrar no site e depois tocar no emoji de cartinha 💌 que fica lá embaixo. Escolha a mensagem que combinar com o que estiver sentindo naquele dia. Eu queria que esse cantinho continuasse aqui para você, mesmo depois de hoje. ❤️</p>
+
+        <button id="btnVoltarHistoria" type="button" onclick="abrirEncerramentoFinal()">Finalizar essa surpresa ❤️</button>
+    </div>
+</div>
+
+
+<div id="encerramentoFinal" aria-hidden="true">
+    <div class="encerramento-conteudo">
+        <p class="encerramento-mini">Antes de realmente acabar...</p>
+        <h2 class="encerramento-titulo">Só queria que você guardasse uma última coisa. ❤️</h2>
+
+        <p class="encerramento-texto">
+            Eu ainda estou aprendendo a fazer sites, então talvez isso aqui não seja o maior, o mais perfeito ou o mais impressionante do mundo. Mas cada detalhe que você viu foi pensado em você. Cada frase, cada efeito, cada surpresa e cada ideia nasceu da vontade de fazer algo que conseguisse mostrar, nem que fosse só um pouquinho, o quanto você se tornou especial para mim.<br><br>
+            Eu poderia aprender mil códigos novos, criar páginas muito maiores e inventar animações muito mais bonitas… e mesmo assim acho que nenhuma delas conseguiria explicar direito tudo o que eu sinto. No fim, por trás de todo esse site, existe uma coisa muito simples que eu não quero que você esqueça.
+        </p>
+
+        <div class="encerramento-impacto">O site pode terminar aqui. O que eu sinto por você, não. Eu te amo muito. ❤️</div>
+        <p class="encerramento-assinatura">E talvez isso não seja um fim… talvez seja só o começo. ✨</p>
+
+        <button id="btnRecomecar" type="button" onclick="encerrarCinematicamente()">Fechar essa história por enquanto ❤️</button>
+    </div>
+</div>
+
+
+<div id="fadeCinemaFim" aria-hidden="true">
+    <div class="fade-fim-conteudo">
+        <p class="fade-fim-linha primeira">Por hoje, essa surpresa termina aqui...</p>
+        <div class="fade-fim-linha final">Fim...<br>por enquanto. ❤️</div>
+        <p class="fade-fim-linha sub">Porque eu ainda espero ter muitos capítulos para viver com você.</p>
+        <button id="btnReverTudo" type="button" onclick="location.reload()">↻ Rever desde o início</button>
+    </div>
+</div>
+
+<button id="btnCartasRapidas" type="button" onclick="abrirCartasRapidas(event)" aria-label="Abrir cartinhas" title="Abra quando...">💌</button>
+
+<button id="btnSom" type="button" onclick="alternarSom(event)" aria-label="Pausar música" title="Pausar ou continuar música">🔊</button>
+
+<script>
 
 let texto1 = `
-Feliz aniversário, minha princesa.      
+Feliz aniversário, minha princesa.
 
-Desde que você entrou na minha vida, tudo começou a ter mais cor, mais sentido, mais intensidade.    
-Você virou meu pensamento favorito, minha paz nos dias difíceis e o motivo do meu sorriso mais sincero.    
+Desde que você entrou na minha vida, tudo começou a ter mais cor, mais sentido, mais intensidade.
+Você virou meu pensamento favorito, minha paz nos dias difíceis e o motivo do meu sorriso mais sincero.
 
-Cada conversa nossa, cada risada, cada momento compartilhado    
-foi construindo algo que hoje é muito maior do que eu imaginava sentir.    
+Cada conversa nossa, cada risada, cada momento compartilhado
+foi construindo algo que hoje é muito maior do que eu imaginava sentir.
 
-Você é aquela pessoa que acalma meu coração,    
-que acelera meus sentimentos,    
-e que me faz acreditar que algumas conexões realmente são especiais.    
+Você é aquela pessoa que acalma meu coração,
+que acelera meus sentimentos,
+e que me faz acreditar que algumas conexões realmente são especiais.
 
-Se eu pudesse fazer um pedido hoje,    
-não seria nada material.    
-Seria apenas continuar ao seu lado,    
-escrevendo capítulos,    
-vivendo momentos,    
-colecionando memórias   
-e transformando sonhos em realidade.    
+Se eu pudesse fazer um pedido hoje,
+não seria nada material.
+Seria apenas continuar ao seu lado,
+escrevendo capítulos,
+vivendo momentos,
+colecionando memórias
+e transformando sonhos em realidade.
 
-Que esse novo ano da sua vida venha com ainda mais luz,    
-mais conquistas,    
-mais felicidade    
-e, se depender de mim,    
-com muito amor também.    
+Que esse novo ano da sua vida venha com ainda mais luz,
+mais conquistas,
+mais felicidade
+e, se depender de mim,
+com muito amor também.
 
-Eu escolheria você mil vezes.    
+Eu escolheria você mil vezes.
 E continuaria escolhendo, todos os dias.
 Espero muito que eu e você sejamos para sempre, que um dia subiremos no altar juntos,
 e que eu seja o melhor pai do mundo dos filhos que você tanto sonha em ter.
@@ -469,6 +1313,59 @@ let i = 0;
 let fase = 1;
 let indiceIdioma = 0;
 let indiceLetra = 0;
+let rolagemAutomatica = true;
+let podeDetectarRolagemManual = false;
+let toqueInicioY = null;
+
+function acompanharTexto(){
+    if(!rolagemAutomatica) return;
+
+    requestAnimationFrame(() => {
+        if(!rolagemAutomatica) return;
+
+        const fimTexto = document.getElementById("fimTexto");
+        const scroller = document.scrollingElement || document.documentElement;
+        scroller.scrollTop = scroller.scrollHeight;
+        if(fimTexto){
+            fimTexto.scrollIntoView({
+                block: "end",
+                inline: "nearest",
+                behavior: "auto"
+            });
+        }
+    });
+}
+
+function pararRolagemAutomatica(){
+    if(!podeDetectarRolagemManual) return;
+    rolagemAutomatica = false;
+}
+
+window.addEventListener("wheel", pararRolagemAutomatica, {passive:true});
+
+window.addEventListener("touchstart", (e) => {
+    if(!podeDetectarRolagemManual || !e.touches.length) return;
+    toqueInicioY = e.touches[0].clientY;
+}, {passive:true});
+
+window.addEventListener("touchmove", (e) => {
+    if(!podeDetectarRolagemManual || toqueInicioY === null || !e.touches.length) return;
+    const deslocamento = Math.abs(e.touches[0].clientY - toqueInicioY);
+    if(deslocamento > 24){
+        pararRolagemAutomatica();
+        toqueInicioY = null;
+    }
+}, {passive:true});
+
+window.addEventListener("touchend", () => {
+    toqueInicioY = null;
+}, {passive:true});
+
+window.addEventListener("keydown", (e) => {
+    if(["ArrowUp", "ArrowDown", "PageUp", "PageDown", "Home", "End", " "].includes(e.key)){
+        pararRolagemAutomatica();
+    }
+});
 
 function escrever(){
 
@@ -476,11 +1373,12 @@ function escrever(){
 
         if(i < texto1.length){
             document.getElementById("texto").innerHTML += texto1.charAt(i);
+            acompanharTexto();
             i++;
             setTimeout(escrever,35);
         }else{
             fase = 2;
-            document.getElementById("texto").innerHTML += 
+            document.getElementById("texto").innerHTML +=
             "<ol class='lista-amor' id='listaAmor'></ol>";
             escrever();
         }
@@ -499,14 +1397,15 @@ function escrever(){
 
             const itemAtual = document.getElementById("item"+indiceIdioma);
             itemAtual.innerHTML += idiomas[indiceIdioma].charAt(indiceLetra);
+            acompanharTexto();
             indiceLetra++;
 
             if(indiceLetra < idiomas[indiceIdioma].length){
-                setTimeout(escrever,5); // velocidade das letras
+                setTimeout(escrever,5);
             }else{
                 indiceIdioma++;
                 indiceLetra = 0;
-                setTimeout(escrever,50); // tempo entre idiomas
+                setTimeout(escrever,50);
             }
 
         }else{
@@ -521,40 +1420,62 @@ function escrever(){
 
         if(i < texto2.length){
             document.getElementById("texto").innerHTML += texto2.charAt(i);
+            acompanharTexto();
             i++;
             setTimeout(escrever,35);
         }else{
-            document.getElementById("btnMusica").classList.add("mostrar");
+            setTimeout(mostrarChamadaFinal, 1200);
         }
 
     }
 
 }
 
-function abrir(){    
-    document.querySelector(".heart-btn").classList.add("open");    
-    setTimeout(()=>{    
-        document.getElementById("startScreen").style.display="none";    
-        escrever();    
-        gerarCoracoes();    
+function abrir(){
+    rolagemAutomatica = true;
+    podeDetectarRolagemManual = false;
+    toqueInicioY = null;
+
+    const scrollerInicial = document.scrollingElement || document.documentElement;
+    scrollerInicial.scrollTop = 0;
+
+    const musica = document.getElementById("musica");
+    const btnSom = document.getElementById("btnSom");
+    musica.volume = 0.35;
+    musica.currentTime = 0;
+    musica.play().then(() => {
+        btnSom.textContent = "🔊";
+        btnSom.setAttribute("aria-label", "Pausar música");
+    }).catch(() => {
+        btnSom.textContent = "🔇";
+        btnSom.setAttribute("aria-label", "Tocar música");
+    });
+
+    btnSom.classList.add("mostrar");
+    document.querySelector(".heart-btn").classList.add("open");
+
+    setTimeout(()=>{
+        document.getElementById("startScreen").style.display="none";
+        document.getElementById("btnCartasRapidas").classList.add("mostrar");
+        escrever();
+        gerarCoracoes();
         gerarBrilhos();
-    },1000);    
-}    
-
-
-// CORAÇÕES SUBINDO ALEATÓRIOS
-function gerarCoracoes(){    
-    setInterval(()=>{    
-        const heart=document.createElement("div");    
-        heart.classList.add("heart");    
-        heart.innerHTML="❤️";    
-        heart.style.left=Math.random()*100+"vw";    
-        heart.style.fontSize=(Math.random()*20+15)+"px";    
-        document.body.appendChild(heart);    
-        setTimeout(()=>heart.remove(),5000);    
-    },400);    
-
-    // CORAÇÕES SEGUINDO CURSOR / TOQUE
+        efeitoAniversario();
+        setTimeout(() => {
+            podeDetectarRolagemManual = true;
+        }, 700);
+    },1000);
+}
+function gerarCoracoes(){
+    setInterval(()=>{
+        const heart=document.createElement("div");
+        heart.classList.add("heart");
+        heart.innerHTML="❤️";
+        heart.style.left=Math.random()*100+"vw";
+        heart.style.fontSize=(Math.random()*20+15)+"px";
+        document.body.appendChild(heart);
+        setTimeout(()=>heart.remove(),5000);
+    },400);
     document.addEventListener("mousemove", e => {
         const h = document.createElement("div");
         h.classList.add("heart");
@@ -578,8 +1499,6 @@ function gerarCoracoes(){
         setTimeout(()=>h.remove(),1500);
     });
 }
-
-// BRILHOS PISCANDO
 function gerarBrilhos(){
     for(let j=0;j<50;j++){
         const b = document.createElement("div");
@@ -593,204 +1512,354 @@ function gerarBrilhos(){
     }
 }
 
-/* CONTADOR */    
-const dataBeijo = new Date("2026-02-09T07:20:00");    
 
-function atualizarContador(){    
-    const agora = new Date();    
-    const diff = agora - dataBeijo;    
+const dataBeijo = new Date("2026-06-14T20:00:00");
 
-    const meses = Math.floor(diff / (1000*60*60*24*30));    
-    const dias = Math.floor(diff / (1000*60*60*24)) % 30;    
-    const horas = Math.floor(diff / (1000*60*60)) % 24;    
-    const segundos = Math.floor(diff / 1000) % 60;    
+function atualizarMensagemTopo(){
+    const contador = document.getElementById("contador");
+    if(!contador) return;
 
-    document.getElementById("contador").innerHTML =    
-    `Nosso primeiro beijo aconteceu há ${meses} meses,    
-     ${dias} dias,    
-     ${horas} horas e    
-     ${segundos} segundos`;    
-}    
+    const agora = new Date();
+    const diff = agora - dataBeijo;
 
-setInterval(atualizarContador,1000);   
+    if(diff < 0){
+        const diasFaltando = Math.ceil(Math.abs(diff) / (1000*60*60*24));
+        contador.innerHTML = `Faltam aproximadamente ${diasFaltando} dias para essa data especial ❤️`;
+        return;
+    }
 
-function abrirPlayer(event){
-    event.stopPropagation(); // impede o clique de continuar
-    document.getElementById("telaPlayer").classList.add("ativa");
+    const totalDias = Math.floor(diff / (1000*60*60*24));
+    const horas = Math.floor(diff / (1000*60*60)) % 24;
+    const minutos = Math.floor(diff / (1000*60)) % 60;
+    const segundos = Math.floor(diff / 1000) % 60;
+
+    contador.innerHTML = `Nosso primeiro beijo aconteceu há ${totalDias} dias, ${horas}h ${minutos}min e ${segundos}s ❤️`;
 }
 
-function revelar(){
-    const misterio = document.getElementById("misterio");
+atualizarMensagemTopo();
+setInterval(atualizarMensagemTopo,1000);
+const motivos = [
+    "Seu sorriso, que consegue melhorar meu dia ❤️",
+    "Seu jeito de ser, que me conquistou de um jeito único ✨",
+    "A paz que eu sinto quando estou com você 🫶",
+    "Nossas conversas, até as mais aleatórias 💬",
+    "Seu carinho comigo 💗",
+    "O jeito que sua companhia deixa tudo melhor 🤍",
+    "Cada risada que a gente divide 😂❤️",
+    "Como você consegue deixar meus dias mais especiais 🌷",
+    "Os momentos simples que viram lembranças incríveis com você 📸",
+    "Seu abraço e a vontade de ficar nele por muito tempo 🫂",
+    "Tudo o que ainda quero viver ao seu lado 🌙",
+    "Os sonhos que eu imagino construindo com você ✨",
+    "O jeito que você faz meu coração ficar feliz sem nem tentar 💞",
+    "Cada pedacinho da nossa história até aqui 🥹❤️",
+    "O jeito que até um dia comum fica melhor quando tem você nele ☀️❤️",
+    "A forma como você ocupa meus pensamentos sem nem perceber 💭💗",
+    "Seu jeitinho que eu reconheceria em qualquer lugar 🥰",
+    "A vontade que você me dá de construir um futuro bonito ao seu lado 🏡❤️",
+    "A saudade que aparece até pouco tempo depois de te ver 🥹💞",
+    "E, acima de tudo, simplesmente por você ser você ❤️"
+];
+let motivosCriados = false;
 
-    misterio.style.transform = "scale(8)";
-    misterio.style.opacity = "0";
+
+function mostrarChamadaFinal(){
+    const chamada = document.getElementById("chamadaFinal");
+    chamada.style.display = "block";
+    requestAnimationFrame(() => chamada.classList.add("mostrar"));
+
+    if(rolagemAutomatica){
+        setTimeout(() => {
+            chamada.scrollIntoView({behavior:"smooth", block:"center"});
+        }, 250);
+    }
+}
+
+function abrirSurpresaFinal(){
+    const tela = document.getElementById("surpresaFinal");
+    tela.classList.add("aberta");
+    tela.setAttribute("aria-hidden", "false");
+    document.body.style.overflow = "hidden";
+}
+
+function fecharSurpresaFinal(){
+    const tela = document.getElementById("surpresaFinal");
+    tela.classList.remove("aberta");
+    tela.setAttribute("aria-hidden", "true");
+    document.body.style.overflow = "";
+}
+
+function criarMotivos(){
+    if(motivosCriados) return;
+    motivosCriados = true;
+
+    const primeiros = document.getElementById("primeirosMotivos");
+    const mais = document.getElementById("maisMotivos");
+
+    motivos.forEach((motivo, index) => {
+        const card = document.createElement("div");
+        card.className = "motivo";
+        card.textContent = motivo;
+        (index < 3 ? primeiros : mais).appendChild(card);
+    });
+}
+
+function revelarTresMotivos(){
+    criarMotivos();
+
+    const botao = document.getElementById("btnTresMotivos");
+    const primeiros = [...document.querySelectorAll("#primeirosMotivos .motivo")];
+    const extras = [...document.querySelectorAll("#maisMotivos .motivo")];
+    const pegadinha = document.getElementById("pegadinhaMotivos");
+
+    botao.disabled = true;
+    botao.classList.add("esconder");
+    setTimeout(() => botao.style.display = "none", 350);
+
+    primeiros.forEach((card,index) => {
+        setTimeout(() => card.classList.add("mostrar"), index * 450);
+    });
+
+    const tempoTres = 3 * 450 + 450;
+    setTimeout(() => {
+        pegadinha.classList.add("mostrar");
+        pegadinha.scrollIntoView({behavior:"smooth", block:"center"});
+    }, tempoTres);
 
     setTimeout(() => {
-        misterio.style.display = "none";
-        document.getElementById("textoRevelar").style.display = "none";
-        document.getElementById("spotifyFake").style.opacity = "1";
-        carregarMusica(musicaAtual);
-    }, 600);
+        extras.forEach((card,index) => {
+            setTimeout(() => card.classList.add("mostrar"), index * 150);
+        });
+    }, tempoTres + 1150);
 }
 
-let jaRevelou = false;
 
-document.addEventListener("click", function(){
+let rolagemAntesDasCartas = true;
 
-    if(jaRevelou) return;
+function abrirCartasRapidas(event){
+    if(event) event.stopPropagation();
 
-    const telaPlayer = document.getElementById("telaPlayer");
+    rolagemAntesDasCartas = rolagemAutomatica;
+    rolagemAutomatica = false;
 
-    // Só funciona se o player estiver aberto
-    if(!telaPlayer.classList.contains("ativa")) return;
+    const tela = document.getElementById("cartasRapidas");
+    tela.classList.add("aberta");
+    tela.setAttribute("aria-hidden", "false");
+    document.body.style.overflow = "hidden";
+}
 
-    revelar();
-    jaRevelou = true;
+function fecharCartasRapidas(){
+    const tela = document.getElementById("cartasRapidas");
+    tela.classList.remove("aberta");
+    tela.setAttribute("aria-hidden", "true");
+    document.body.style.overflow = "";
 
+    document.querySelectorAll("#cartasRapidas .carta-mensagem").forEach(carta => carta.classList.remove("mostrar"));
+    document.querySelectorAll("#cartasRapidas .carta-btn").forEach(btn => btn.classList.remove("aberta"));
+
+    if(rolagemAntesDasCartas){
+        rolagemAutomatica = true;
+        setTimeout(acompanharTexto, 80);
+    }
+}
+
+const cartasNormaisAbertas = new Set();
+
+function verificarCartaSecreta(){
+    const totalNormais = document.querySelectorAll("#cartasRapidas [data-carta-normal]").length;
+    const btnSecreto = document.getElementById("btnCartaSecreta");
+    if(btnSecreto && totalNormais > 0 && cartasNormaisAbertas.size >= totalNormais){
+        btnSecreto.classList.add("mostrar");
+        setTimeout(() => btnSecreto.scrollIntoView({behavior:"smooth", block:"center"}), 350);
+    }
+}
+
+function abrirCarta(tipo, botao){
+    const alvo = document.getElementById("carta-" + tipo);
+    if(!alvo) return;
+
+    const jaAberta = alvo.classList.contains("mostrar");
+    document.querySelectorAll("#cartasRapidas .carta-mensagem").forEach(carta => carta.classList.remove("mostrar"));
+    document.querySelectorAll("#cartasRapidas .carta-btn").forEach(btn => btn.classList.remove("aberta"));
+
+    if(!jaAberta){
+        alvo.classList.add("mostrar");
+        botao.classList.add("aberta");
+
+        if(botao.dataset.cartaNormal){
+            cartasNormaisAbertas.add(botao.dataset.cartaNormal);
+            verificarCartaSecreta();
+        }
+
+        setTimeout(() => alvo.scrollIntoView({behavior:"smooth", block:"center"}), 80);
+    }
+}
+
+let musicaPausadaPelaVoz = false;
+function alternarMensagemVoz(){
+    const voz = document.getElementById("vozMensagem");
+    const musica = document.getElementById("musica");
+    const btn = document.getElementById("btnVoz");
+    const status = document.getElementById("statusVoz");
+
+    if(voz.paused){
+        if(!musica.paused){
+            musica.pause();
+            musicaPausadaPelaVoz = true;
+        }
+
+        voz.play().then(() => {
+            btn.textContent = "⏸ Pausar minha mensagem";
+            status.textContent = "";
+        }).catch(() => {
+            status.textContent = "Adicione o arquivo mensagem-voz.mp3 na mesma pasta do site para usar esta parte. ❤️";
+            if(musicaPausadaPelaVoz){
+                musica.play().catch(()=>{});
+                musicaPausadaPelaVoz = false;
+            }
+        });
+    }else{
+        voz.pause();
+        btn.textContent = "▶ Continuar minha mensagem";
+        if(musicaPausadaPelaVoz){
+            musica.play().catch(()=>{});
+            musicaPausadaPelaVoz = false;
+        }
+    }
+}
+
+const vozMensagem = document.getElementById("vozMensagem");
+vozMensagem.addEventListener("ended", () => {
+    const musica = document.getElementById("musica");
+    const btn = document.getElementById("btnVoz");
+    btn.textContent = "↻ Ouvir minha mensagem novamente";
+    if(musicaPausadaPelaVoz){
+        musica.play().catch(()=>{});
+        musicaPausadaPelaVoz = false;
+    }
 });
 
-const playlist = [
-  {
-    nome: "Te vivo",
-    artista: "Luan Santana",
-    arquivo: "te-vivo.mp3",
-    capa: "capa7.jpg"
-  },
-  { 
-    nome: "Pra sempre com você",
-    artista: "Jorge & Mateus",
-    arquivo: "para-sempre.mp3",
-    capa: "capa5.jpg"
-  },
-  {
-    nome: "Duas Metades",
-    artista: "Jorge & Mateus",
-    arquivo: "duas-metades.mp3",
-    capa: "capa.jpg"
-  },
-  {
-    nome: "Sonha comigo",
-    artista: "Zé neto & Cristiano",
-    arquivo: "sonha-comigo.mp3",
-    capa: "capa6.jpg"
-  },
-  {
-    nome: "Os anjos cantam",
-    artista: "Jorge & Mateus",
-    arquivo: "anjos-cantam.mp3",
-    capa: "capa3.jpg"
-  }
-  
-];
-
-let musicaAtual = 0;
-
-function carregarMusica(index){
-    const musica = document.getElementById("musica");
-
-    musica.src = playlist[index].arquivo;
-
-    document.querySelector("#spotifyFake h2").innerText = playlist[index].nome;
-    document.querySelector("#spotifyFake p").innerText = playlist[index].artista;
-    document.getElementById("capaMusica").src = playlist[index].capa;
-
-    musica.load();
+function revelarRespostaSecreta(){
+    const resposta = document.getElementById("respostaSecreta");
+    const btn = document.getElementById("btnPerguntaSecreta");
+    resposta.classList.add("mostrar");
+    btn.style.display = "none";
+    setTimeout(() => resposta.scrollIntoView({behavior:"smooth", block:"center"}), 80);
 }
 
-function tocarMusica(){
+function abrirCapsulaTempo(){
+    const capsula = document.getElementById("capsulaConteudo");
+    const btn = document.getElementById("btnCapsula");
+    const aberta = capsula.classList.toggle("mostrar");
+    btn.textContent = aberta ? "Fechar a cápsula por enquanto ❤️" : "Abrir a cápsula do tempo ✨";
+    if(aberta) setTimeout(() => capsula.scrollIntoView({behavior:"smooth", block:"center"}), 80);
+}
+
+function iniciarFinalCinematografico(){
+    const final = document.getElementById("finalCinema");
+    const surpresa = document.getElementById("surpresaFinal");
     const musica = document.getElementById("musica");
-    const botao = document.querySelector("#controles button:nth-child(2)");
+
+    final.classList.add("ativo");
+    final.setAttribute("aria-hidden", "false");
+    surpresa.setAttribute("aria-hidden", "true");
+    final.scrollTop = 0;
+
+    if(!musica.paused){
+        musica.volume = Math.min(0.45, musica.volume + 0.08);
+    }
+}
+
+function fecharFinalCinematografico(){
+    const final = document.getElementById("finalCinema");
+    const surpresa = document.getElementById("surpresaFinal");
+    final.classList.remove("ativo");
+    final.setAttribute("aria-hidden", "true");
+    surpresa.setAttribute("aria-hidden", "false");
+}
+
+
+function abrirEncerramentoFinal(){
+    const final = document.getElementById("finalCinema");
+    const encerramento = document.getElementById("encerramentoFinal");
+    const musica = document.getElementById("musica");
+
+    final.classList.remove("ativo");
+    final.setAttribute("aria-hidden", "true");
+
+    encerramento.classList.add("ativo");
+    encerramento.setAttribute("aria-hidden", "false");
+    encerramento.scrollTop = 0;
+    if(!musica.paused){
+        musica.volume = Math.min(musica.volume, 0.28);
+    }
+}
+
+
+function encerrarCinematicamente(){
+    const tela = document.getElementById("fadeCinemaFim");
+    const musica = document.getElementById("musica");
+    const btn = document.getElementById("btnRecomecar");
+
+    if(btn){
+        btn.disabled = true;
+        btn.style.pointerEvents = "none";
+    }
+
+    tela.classList.add("ativo");
+    tela.setAttribute("aria-hidden", "false");
+    if(musica && !musica.paused){
+        const volumeInicial = musica.volume;
+        const passos = 40;
+        let passo = 0;
+        const fadeAudio = setInterval(() => {
+            passo++;
+            musica.volume = Math.max(0, volumeInicial * (1 - passo / passos));
+            if(passo >= passos){
+                clearInterval(fadeAudio);
+                musica.pause();
+                musica.volume = volumeInicial;
+            }
+        }, 55);
+    }
+}
+
+function efeitoAniversario(){
+    const simbolos = ["🎂","✨","❤️","🎉"];
+    for(let n=0; n<28; n++){
+        setTimeout(() => {
+            const item = document.createElement("div");
+            item.className = "festa-aniversario";
+            item.textContent = simbolos[Math.floor(Math.random()*simbolos.length)];
+            item.style.left = Math.random()*100 + "vw";
+            item.style.fontSize = (Math.random()*15 + 17) + "px";
+            item.style.animationDuration = (Math.random()*2 + 3.4) + "s";
+            item.style.setProperty("--desvio", (Math.random()*140 - 70) + "px");
+            document.body.appendChild(item);
+            setTimeout(() => item.remove(), 6000);
+        }, n*75);
+    }
+}
+
+
+function alternarSom(event){
+    event.stopPropagation();
+
+    const musica = document.getElementById("musica");
+    const btnSom = document.getElementById("btnSom");
 
     if(musica.paused){
-        musica.play();
-        botao.innerHTML = "▌▌";
-    } else {
+        musica.play().then(() => {
+            btnSom.textContent = "🔊";
+            btnSom.setAttribute("aria-label", "Pausar música");
+        });
+    }else{
         musica.pause();
-        botao.innerHTML = "▶";
+        btnSom.textContent = "🔇";
+        btnSom.setAttribute("aria-label", "Tocar música");
     }
 }
 
-const audio = document.getElementById("musica");
-const barra = document.getElementById("barra");
-const barraContainer = document.getElementById("barraContainer");
-
-audio.addEventListener("loadedmetadata", () => {
-    document.getElementById("tempoTotal").innerText = formatarTempo(audio.duration);
-});
-
-audio.addEventListener("timeupdate", () => {
-    const progresso = (audio.currentTime / audio.duration) * 100;
-    barra.style.width = progresso + "%";
-
-    document.getElementById("tempoAtual").innerText = formatarTempo(audio.currentTime);
-});
-
-function formatarTempo(segundos){
-    const min = Math.floor(segundos / 60);
-    const sec = Math.floor(segundos % 60);
-    return min + ":" + (sec < 10 ? "0" + sec : sec);
-}
-
-barraContainer.addEventListener("click", (e) => {
-    const largura = barraContainer.clientWidth;
-    const cliqueX = e.offsetX;
-    const tempo = (cliqueX / largura) * audio.duration;
-    audio.currentTime = tempo;
-})
-
-audio.addEventListener("ended", () => {
-
-    if(musicaAtual < playlist.length - 1){
-        proximaMusica();
-    } else {
-        document.querySelector("#controles button:nth-child(2)").innerHTML = "▶";
-    }
-
-});
-
-function proximaMusica(){
-
-    if(musicaAtual >= playlist.length - 1){
-        return; // já está na última, não faz nada
-    }
-
-    musicaAtual++;
-
-    animarTroca();
-    carregarMusica(musicaAtual);
-
-    audio.play();
-    document.querySelector("#controles button:nth-child(2)").innerHTML = "▌▌";
-}
-
-function voltarMusica(){
-
-    if(musicaAtual <= 0){
-        return; // já está na primeira, não faz nada
-    }
-
-    musicaAtual--;
-
-    animarTroca();
-    carregarMusica(musicaAtual);
-
-    audio.play();
-    document.querySelector("#controles button:nth-child(2)").innerHTML = "▌▌";
-}
-
-function animarTroca(){
-    const box = document.getElementById("spotifyFake");
-
-    box.style.opacity = "0";
-    box.style.transform = "translateX(30px)";
-
-    setTimeout(() => {
-        box.style.transform = "translateX(0)";
-        box.style.opacity = "1";
-    }, 200);
-}
-
-    
 </script>
-</body>    
-</html> 
+</body>
+</html>
